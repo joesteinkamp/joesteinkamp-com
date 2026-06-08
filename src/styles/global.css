@@ -75,10 +75,11 @@ section{padding:9vh 0}
 .card .big{font-size:1.35rem;font-weight:500;margin-top:12px}
 .card.span{grid-column:1/-1}
 .feed{display:flex;flex-direction:column;gap:14px;margin-top:16px}
-.feed .row{display:flex;gap:14px;align-items:center;font-family:var(--mono);font-size:14px}
-.feed .row .t{color:var(--muted);min-width:48px}
-.feed .row .r{color:var(--cyan)}
-.feed .row .x{color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.feed .row{display:flex;gap:14px;align-items:center;font-family:var(--mono);font-size:14px;min-width:0}
+.feed .row .t{color:var(--muted);min-width:48px;flex:none}
+.feed .row .r{color:var(--cyan);white-space:nowrap;flex:none}
+/* fill remaining space and ellipsize — min-width:0 lets the flex item shrink */
+.feed .row .x{color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;min-width:0}
 .pillz{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
 .pill{font-family:var(--mono);font-size:12px;border:1px solid var(--line);
   padding:5px 11px;border-radius:999px;color:var(--muted)}
