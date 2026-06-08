@@ -7,7 +7,6 @@ export const site = {
   social: {
     github: 'https://github.com/joesteinkamp',
     linkedin: 'https://linkedin.com/in/joesteinkamp',
-    // TODO: confirm the public-facing contact address.
     email: 'mailto:joe@joesteinkamp.com',
   },
   nav: [

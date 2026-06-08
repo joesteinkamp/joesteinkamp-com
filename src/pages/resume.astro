@@ -26,6 +26,17 @@ import { resume } from '../data/resume.ts';
           </div>
         ))}
 
+        <h2 style="margin-top:5vh;font-size:1.1rem;font-family:var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.1em">Education</h2>
+        {resume.education.map((e) => (
+          <div class="role">
+            <div>
+              <h3>{e.degree}</h3>
+              <div class="co">{e.school}</div>
+            </div>
+            <div class="pd">{e.period}</div>
+          </div>
+        ))}
+
         <h2 style="margin-top:5vh;font-size:1.1rem;font-family:var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.1em">Skills</h2>
         <div class="skills">{resume.skills.map((s) => <span class="pill">{s}</span>)}</div>
 
