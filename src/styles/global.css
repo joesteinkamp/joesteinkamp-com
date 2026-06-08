@@ -164,7 +164,8 @@ footer a:hover{color:var(--acid)}
 .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s,transform .7s}
 .reveal.in{opacity:1;transform:none}
 
-@media(max-width:760px){
+/* collapse multi-column grids to one column on tablet portrait (incl. iPad ~768px) and below */
+@media(max-width:900px){
   .now,.work{grid-template-columns:1fr}
   .post{grid-template-columns:70px 1fr;gap:12px}
   .post .ar{display:none}
