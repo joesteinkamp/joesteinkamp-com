@@ -1,13 +1,13 @@
 {
-  "fetchedAt": "2026-06-08T12:14:30.240Z",
+  "fetchedAt": "2026-06-08T14:36:33.378Z",
   "repos": [
     {
       "name": "joesteinkamp-com",
       "description": null,
       "url": "https://github.com/joesteinkamp/joesteinkamp-com",
       "stars": 0,
-      "language": null,
-      "updatedAt": "2026-06-08T11:15:08Z",
+      "language": "Astro",
+      "updatedAt": "2026-06-08T14:33:11Z",
       "topics": []
     },
     {

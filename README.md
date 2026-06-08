@@ -45,5 +45,5 @@ workflow builds and publishes `dist/` to Pages. A nightly run rebuilds to
 refresh the GitHub feed. No servers, secrets, or SSH keys to manage.
 
 Custom domain is set by [`public/CNAME`](./public/CNAME) (currently
-`jsweb.joesteinkamp.com` for staging). At cutover, change it to
+`newsite.joesteinkamp.com` for staging). At cutover, change it to
 `joesteinkamp.com`, update `site` in `astro.config.mjs`, and point DNS at Pages.

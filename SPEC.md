@@ -11,7 +11,7 @@ A craft-forward personal site for a product design & design-engineering leader. 
 
 ## 2. Non-negotiable constraints
 
-- **Self-hosted** on Joe's own Ubuntu box (`jsweb.joesteinkamp.com`). No Vercel/Netlify runtime. Served by **nginx**.
+- **Self-hosted** on Joe's own Ubuntu box (`newsite.joesteinkamp.com`). No Vercel/Netlify runtime. Served by **nginx**.
 - **Low ongoing effort.** No CMS to babysit, no database, no plugins to patch (the WordPress pain we're escaping).
 - **Agent-maintainable.** Content is plain files in Git; agents propose changes via PR; Joe approves.
 
@@ -87,7 +87,7 @@ Hosted on **GitHub Pages** (chosen over self-hosting for lowest maintenance — 
 box to patch, free CDN + HTTPS). Served at the domain root via a custom domain
 (`public/CNAME`), so no `base` path is needed.
 
-- **Phase 1 — stage:** Pages serves at `jsweb.joesteinkamp.com` (DNS: `CNAME jsweb → joesteinkamp.github.io`). WordPress keeps running at the apex.
+- **Phase 1 — stage:** Pages serves at `newsite.joesteinkamp.com` (DNS: `CNAME newsite → joesteinkamp.github.io`). WordPress keeps running at the apex.
 - **Phase 2 — validate:** content migrated, links checked, performance/SEO verified on the subdomain.
 - **Phase 3 — swap:** change `public/CNAME` + `site` to `joesteinkamp.com`, point apex DNS at Pages (A/AAAA + `www` CNAME), redirect old WordPress URLs, retire WordPress (keep an export as archive).
 - **Rollback** = revert the commit; the previous build redeploys.
