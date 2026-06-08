@@ -1,15 +1,15 @@
 # Launch Checklist
 
-Status of getting the new site live at `jsweb.joesteinkamp.com` (staging) and then
+Status of getting the new site live at `newsite.joesteinkamp.com` (staging) and then
 swapping the apex over from WordPress. See `SPEC.md` for architecture.
 
 ## 1. Go live on the staging subdomain
 
 - [ ] **Merge PR #1** into `main` (the complete site).
 - [ ] **Enable Pages** — Settings → Pages → Source: *GitHub Actions* (already set via API; confirm it stuck).
-- [ ] **Add DNS:** `CNAME` record `jsweb` → `joesteinkamp.github.io`. Apex stays on WordPress, untouched.
+- [ ] **Add DNS:** `CNAME` record `newsite` → `joesteinkamp.github.io`. Apex stays on WordPress, untouched.
 - [ ] Wait for the deploy workflow to finish and GitHub to provision the TLS cert (minutes, up to ~1 hr).
-- [ ] Verify **https://jsweb.joesteinkamp.com** loads and pages/images render.
+- [ ] Verify **https://newsite.joesteinkamp.com** loads and pages/images render.
 
 ## 2. Contact email
 

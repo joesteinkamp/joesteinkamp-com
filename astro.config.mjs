@@ -2,10 +2,10 @@
 import { defineConfig } from 'astro/config';
 
 // Deployed to GitHub Pages with a custom domain (public/CNAME), so the site is
-// served at the domain root — no `base` needed. Staging at jsweb.joesteinkamp.com;
+// served at the domain root — no `base` needed. Staging at newsite.joesteinkamp.com;
 // at cutover, change public/CNAME + this `site` to https://joesteinkamp.com.
 export default defineConfig({
-  site: 'https://jsweb.joesteinkamp.com',
+  site: 'https://newsite.joesteinkamp.com',
   // Dev only (ignored at build): lets `npm run dev -- --host 0.0.0.0` be reached
   // over Tailscale MagicDNS (e.g. http://clawbot.crane-cod.ts.net:4321) instead of
   // an SSH tunnel. NOTE: `astro preview` has a separate host check this does NOT
