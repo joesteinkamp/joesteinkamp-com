@@ -1,0 +1,26 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const editions = await getCollection('hhmm');
+  return editions.map((e) => ({ params: { slug: e.id }, props: { edition: e } }));
+}
+
+const { edition } = Astro.props;
+const { Content } = await render(edition);
+const d = edition.data;
+---
+
+<Base title={d.title} description={d.summary}>
+  <div class="wrap">
+    <div class="page-head">
+      <a class="back" href="/hhmm">← HHMM</a>
+      <h1 style="margin-top:18px">{d.title}</h1>
+      <div class="ey" style="margin-top:16px">{d.year}{d.films ? ` · ${d.films} films` : ''}</div>
+    </div>
+    <section style="padding-top:1vh">
+      <article class="prose"><Content /></article>
+    </section>
+  </div>
+</Base>

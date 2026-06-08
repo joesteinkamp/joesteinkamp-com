@@ -1,0 +1,314 @@
+---
+import Base from '../layouts/Base.astro';
+
+// ── Design tokens, mirrored from src/styles/global.css :root ──
+// This is the single source of truth for the swatches/specimens below.
+// To change the actual site, edit the matching variable in global.css.
+const colors = [
+  { name: 'bg', value: '#0a0a0f', use: 'Page background' },
+  { name: 'ink', value: '#f4f4f0', use: 'Primary text' },
+  { name: 'muted', value: '#8a8a99', use: 'Secondary text, meta, labels' },
+  { name: 'acid', value: '#d4ff00', use: 'Primary accent · links on hover · selection' },
+  { name: 'hot', value: '#ff2d6b', use: 'Accent · big cursor · gradients' },
+  { name: 'electric', value: '#5b5bff', use: 'Accent · gradients · glow' },
+  { name: 'cyan', value: '#00e5ff', use: 'Accent · prose links · feed rows' },
+  { name: 'line', value: 'rgba(255,255,255,.10)', use: 'Borders, dividers, hairlines' },
+];
+
+const fonts = [
+  { name: 'font', stack: '"Space Grotesk", system-ui, …', use: 'Display & body' },
+  { name: 'mono', stack: '"JetBrains Mono", ui-monospace, …', use: 'Labels, meta, code, nav' },
+];
+
+const gradients = [
+  { name: 'p1', css: 'linear-gradient(135deg,#5b5bff,#00e5ff)' },
+  { name: 'p2', css: 'linear-gradient(135deg,#ff2d6b,#ff8a00)' },
+  { name: 'p3', css: 'linear-gradient(135deg,#0a0a0f,#2a2a55)' },
+  { name: 'p4', css: 'linear-gradient(135deg,#d4ff00,#00e5ff)' },
+];
+---
+
+<Base title="Design System">
+  <div class="wrap">
+    <div class="page-head">
+      <div class="ey">Reference · the tokens & components that power this site</div>
+      <h1>Design System</h1>
+    </div>
+
+    <div class="prose" style="max-width:760px;margin-top:2vh">
+      <p>
+        A living style guide rendered from the real CSS. Everything here is defined in
+        <code>src/styles/global.css</code> — tokens live in the <code>:root</code> block,
+        components are the classes below. Change a value there and it changes everywhere.
+      </p>
+    </div>
+
+    <!-- ── COLOR TOKENS ── -->
+    <section id="color">
+      <div class="sec-head">
+        <h2>Color tokens</h2>
+        <span class="idx">--var · :root</span>
+      </div>
+      <div class="ds-swatches">
+        {colors.map((c) => (
+          <div class="ds-swatch">
+            <div class="ds-chip" style={`background:${c.value}`}></div>
+            <div class="ds-meta">
+              <code class="ds-token">--{c.name}</code>
+              <code class="ds-val">{c.value}</code>
+              <span class="ds-use">{c.use}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- ── PROJECT GRADIENTS ── -->
+    <section id="gradients">
+      <div class="sec-head">
+        <h2>Project gradients</h2>
+        <span class="idx">.proj.p1 – .p4</span>
+      </div>
+      <div class="ds-grad-grid">
+        {gradients.map((g) => (
+          <div class="ds-grad">
+            <div class="ds-grad-fill" style={`background:${g.css}`}></div>
+            <code class="ds-token">.{g.name}</code>
+            <code class="ds-val">{g.css}</code>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- ── TYPOGRAPHY ── -->
+    <section id="type">
+      <div class="sec-head">
+        <h2>Typography</h2>
+        <span class="idx">--font · --mono</span>
+      </div>
+      <div class="ds-stack">
+        {fonts.map((f) => (
+          <div class="ds-font-row">
+            <div class="ds-font-spec" style={`font-family:var(--${f.name})`}>Ag</div>
+            <div class="ds-meta">
+              <code class="ds-token">--{f.name}</code>
+              <span class="ds-use">{f.use}</span>
+              <code class="ds-val">{f.stack}</code>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="ds-type-specimens">
+        <div class="ds-specimen">
+          <span class="ds-lab">h1.display</span>
+          <h1 class="display" style="font-size:clamp(2.4rem,7vw,4.5rem)">
+            Disp<span class="l2">lay</span> <span class="arrow">↗</span>
+          </h1>
+        </div>
+        <div class="ds-specimen">
+          <span class="ds-lab">.sec-head h2</span>
+          <h2 style="font-size:clamp(1.6rem,4vw,2.6rem);font-weight:700;letter-spacing:-.03em">Section heading</h2>
+        </div>
+        <div class="ds-specimen">
+          <span class="ds-lab">.tag</span>
+          <p class="tag">A lead paragraph with an <em>emphasized gradient phrase</em> woven in.</p>
+        </div>
+        <div class="ds-specimen">
+          <span class="ds-lab">.prose p</span>
+          <div class="prose"><p>Body copy in prose. Designed for reading — 720px max, 1.7 line-height, with <a href="#">cyan links</a> and <code>inline code</code>.</p></div>
+        </div>
+        <div class="ds-specimen">
+          <span class="ds-lab">.kicker / .ey (mono)</span>
+          <div class="kicker"><span class="dot"></span> Monospace label · meta text</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── BUTTONS & PILLS ── -->
+    <section id="controls">
+      <div class="sec-head">
+        <h2>Buttons & pills</h2>
+        <span class="idx">.btn · .pill</span>
+      </div>
+      <div class="ds-row">
+        <div class="ds-specimen">
+          <span class="ds-lab">.btn</span>
+          <a href="#controls" class="btn">Button label →</a>
+        </div>
+        <div class="ds-specimen">
+          <span class="ds-lab">.pillz / .pill</span>
+          <div class="pillz">
+            <span class="pill">React</span>
+            <span class="pill">Astro</span>
+            <span class="pill">Design Systems</span>
+            <span class="pill">TypeScript</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CARDS ── -->
+    <section id="cards">
+      <div class="sec-head">
+        <h2>Cards</h2>
+        <span class="idx">.card · .now</span>
+      </div>
+      <div class="now">
+        <div class="card">
+          <div class="lab">Currently</div>
+          <div class="big">A standard hover card with a label and a headline.</div>
+          <div class="pillz">
+            <span class="pill">pill</span>
+            <span class="pill">pill</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="lab">Feed</div>
+          <div class="feed">
+            <div class="row"><span class="t">09:24</span><span class="r">push</span><span class="x">commit message text…</span></div>
+            <div class="row"><span class="t">11:02</span><span class="r">merge</span><span class="x">another row in the feed list</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PROJECT TILES ── -->
+    <section id="tiles">
+      <div class="sec-head">
+        <h2>Project tiles</h2>
+        <span class="idx">.work · .proj</span>
+      </div>
+      <div class="work">
+        {gradients.map((g, i) => (
+          <article class={`proj ${g.name}`}>
+            <div class="bgc"></div>
+            <div class="ov">
+              <h3>Project {i + 1}</h3>
+              <div class="meta">Role · Year · accent {g.name}</div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- ── POSTS LIST ── -->
+    <section id="posts">
+      <div class="sec-head">
+        <h2>Posts list</h2>
+        <span class="idx">.posts · .post</span>
+      </div>
+      <div class="posts">
+        <a class="post" href="#posts"><span class="d">2026</span><span class="ti">A post title in the list</span><span class="ar">↗</span></a>
+        <a class="post" href="#posts"><span class="d">2025</span><span class="ti">Another entry, hover to reveal</span><span class="ar">↗</span></a>
+        <a class="post" href="#posts"><span class="d">2024</span><span class="ti">Third row in the writing index</span><span class="ar">↗</span></a>
+      </div>
+    </section>
+
+    <!-- ── TEASER / CTA BLOCK ── -->
+    <section id="teaser">
+      <div class="sec-head">
+        <h2>Teaser block</h2>
+        <span class="idx">.hhmm</span>
+      </div>
+      <div class="hhmm">
+        <div>
+          <h3>A feature teaser</h3>
+          <p>Radial-gradient panel pairing a headline + blurb with a call-to-action button.</p>
+        </div>
+        <a href="#teaser" class="btn">Explore →</a>
+      </div>
+    </section>
+
+    <!-- ── EFFECTS ── -->
+    <section id="effects">
+      <div class="sec-head">
+        <h2>Effects & motion</h2>
+        <span class="idx">global.css + Base.astro</span>
+      </div>
+      <div class="prose" style="max-width:760px">
+        <ul>
+          <li><code>.glow</code> — fixed radial-gradient backdrop, drifts on an 18s loop (<code>@keyframes drift</code>).</li>
+          <li><code>.cursor</code> / <code>#cur</code> — custom acid dot that follows the pointer and swells to a hot circle (<code>.big</code>) over interactive elements. Hidden on touch.</li>
+          <li><code>.dot</code> — pulsing acid status dot (<code>@keyframes pulse</code>).</li>
+          <li><code>.reveal</code> → <code>.reveal.in</code> — scroll-triggered fade/slide via IntersectionObserver in <code>Base.astro</code>.</li>
+          <li><code>::selection</code> — acid background, black text.</li>
+          <li>Hover transitions live on <code>.card</code>, <code>.proj</code>, <code>.post</code>, <code>.btn</code>, nav links.</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="prose" style="max-width:760px;margin:2vh 0 6vh">
+      <p style="color:var(--muted);font-family:var(--mono);font-size:.9rem">
+        To change anything here, edit <code>src/styles/global.css</code>. Tokens are in the
+        <code>:root</code> block at the top; each component above maps to the class shown in its
+        index label.
+      </p>
+    </div>
+  </div>
+</Base>
+
+<style>
+  /* Page-local layout for the style-guide grids. Component styles themselves
+     come from global.css so these specimens render the real thing. */
+  .ds-swatches {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+  }
+  .ds-swatch {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 14px;
+    background: rgba(255, 255, 255, 0.02);
+  }
+  .ds-chip {
+    width: 56px;
+    height: 56px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    flex: none;
+  }
+  .ds-meta { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+  .ds-token { font-family: var(--mono); font-size: 13px; color: var(--ink); }
+  .ds-val { font-family: var(--mono); font-size: 12px; color: var(--cyan); word-break: break-all; }
+  .ds-use { font-size: 12px; color: var(--muted); }
+
+  .ds-grad-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+  }
+  .ds-grad { display: flex; flex-direction: column; gap: 6px; }
+  .ds-grad-fill { height: 110px; border-radius: 14px; border: 1px solid var(--line); }
+
+  .ds-stack { display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
+  .ds-font-row {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 18px;
+  }
+  .ds-font-spec { font-size: 56px; font-weight: 700; line-height: 1; flex: none; width: 96px; }
+
+  .ds-type-specimens, .ds-row { display: flex; flex-direction: column; gap: 30px; }
+  .ds-specimen {
+    border-top: 1px solid var(--line);
+    padding-top: 16px;
+  }
+  .ds-lab {
+    display: block;
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+  .ds-row { gap: 36px; }
+</style>

@@ -1,0 +1,30 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const projects = (await getCollection('projects')).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+---
+
+<Base title="Work">
+  <div class="wrap">
+    <div class="page-head">
+      <div class="ey">002 / Work</div>
+      <h1>Selected Work</h1>
+    </div>
+    <section style="padding-top:4vh">
+      <div class="work">
+        {projects.map((p) => (
+          <a class={`proj ${p.data.accent}`} href={`/work/${p.id}`}>
+            <div class="bgc"></div>
+            <div class="ov">
+              <h3>{p.data.title}</h3>
+              <div class="meta">{[p.data.role, p.data.year].filter(Boolean).join(' · ')}</div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+  </div>
+</Base>
