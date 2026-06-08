@@ -2,8 +2,9 @@
 // the /resume page renders from this and stays in sync with the site.
 //
 // summary / education / skills are migrated from the real old-site bio.
-// EXPERIENCE still needs Joe's confirmation — titles/dates marked TODO are
-// placeholders; do not treat them as verified.
+// EXPERIENCE: companies + titles are from public sources; the DATE RANGES are
+// inferred (portfolio timeline + the AlphaSense/Tegus acquisition) and need
+// Joe's confirmation. Fix any that are off.
 
 export interface Role {
   company: string;
@@ -25,20 +26,41 @@ export const resume = {
 
   experience: [
     {
-      company: 'TODO — Current Company',
-      role: 'Design Leadership Role',
-      period: '20XX — Present',
-      location: 'St. Louis, MO',
-      highlights: ['TODO: confirm role, dates, and accomplishments.'],
+      company: 'AlphaSense',
+      role: 'Senior Director, Product Design',
+      period: '2024 — Present',
+      location: 'Remote · St. Louis, MO',
+      highlights: [
+        'Lead product design for the market-intelligence and search platform.',
+        'Joined through AlphaSense’s acquisition of Tegus.',
+      ],
+    },
+    {
+      company: 'Tegus',
+      role: 'Head of Design',
+      period: '2021 — 2024',
+      location: 'Chicago, IL',
+      highlights: [
+        'Built and led the design function for the market-intelligence platform serving institutional investors, corporations, and consultancies.',
+      ],
+    },
+    {
+      company: 'Shiftgig',
+      role: 'Director, Design',
+      period: '2018 — 2021',
+      location: 'Chicago, IL',
+      highlights: [
+        'Led design for the on-demand staffing marketplace connecting gig workers with employers — worker scheduling, shift requests, and the marketplace experience.',
+      ],
     },
     {
       company: 'Walgreens',
-      role: 'Product / UX Design',
-      period: 'TODO — TODO',
-      location: 'Chicago, IL',
+      role: 'Senior User Experience Designer',
+      period: '2013 — 2018',
+      location: 'Deerfield, IL',
       highlights: [
-        'Designed across the Walgreens mobile experience on iOS and Android — app redesign, Rx status, and pill reminder.',
-        'TODO: confirm title, dates, scope, and outcomes.',
+        'Designed Walgreens mobile experiences across iOS and Android — app redesign, Rx status, and pill reminder — and consulted on Walgreens.com.',
+        'Defined product vision, requirements, and success metrics, and established design guidelines for mobile.',
       ],
     },
   ] satisfies Role[],
