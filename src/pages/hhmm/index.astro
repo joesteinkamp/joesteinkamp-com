@@ -1,0 +1,30 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const editions = (await getCollection('hhmm')).sort((a, b) => b.data.year - a.data.year);
+---
+
+<Base title="Halloween Horror Movie Month" description="17 years of watching a horror film a day every October.">
+  <div class="wrap">
+    <div class="page-head">
+      <div class="ey">An Annual Tradition · Since 2009</div>
+      <h1>🎃 Halloween Horror Movie Month</h1>
+    </div>
+    <section style="padding-top:1vh">
+      <p class="tag" style="margin-bottom:4vh">
+        Every October I watch (too many) horror films and write up each one. The
+        longest-running thing on this site — and the most fun.
+      </p>
+      <div class="posts">
+        {editions.map((e) => (
+          <a class="post" href={`/hhmm/${e.id}`}>
+            <span class="d">{e.data.year}</span>
+            <span class="ti">{e.data.title}</span>
+            <span class="ar">{e.data.films ? `${e.data.films} films` : '↗'}</span>
+          </a>
+        ))}
+      </div>
+    </section>
+  </div>
+</Base>

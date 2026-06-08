@@ -1,0 +1,112 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+import { site } from '../config/site';
+import now from '../data/now.json';
+import github from '../data/github.json';
+
+const projects = (await getCollection('projects'))
+  .filter((p) => p.data.featured)
+  .sort((a, b) => a.data.order - b.data.order)
+  .slice(0, 4);
+
+const posts = (await getCollection('writing'))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const latest = posts.slice(0, 3);
+
+const repos = (github.repos ?? []).slice(0, 3);
+---
+
+<Base>
+  <div class="wrap">
+    <header class="hero">
+      <div class="kicker"><span class="dot"></span>{site.tagline} · {site.location}</div>
+      <h1 class="display">JOE<br /><span class="l2">STEIN&shy;KAMP<span class="arrow"> ↗</span></span></h1>
+      <p class="tag">I design and <em>build</em> product experiences — leading design teams and shipping the code myself.</p>
+    </header>
+  </div>
+
+  <div class="wrap">
+    <!-- NOW HUB -->
+    <section id="now">
+      <div class="sec-head reveal"><h2>What I'm Doing Now</h2><span class="idx">001 / Recent</span></div>
+      <div class="now">
+        <div class="card span reveal">
+          <div class="lab">Currently</div>
+          <div class="big">{now.currently}</div>
+          <div class="pillz">{now.pills.map((p) => <span class="pill">{p}</span>)}</div>
+        </div>
+
+        <div class="card reveal">
+          <div class="lab">↳ Latest From GitHub</div>
+          <div class="feed">
+            {repos.length === 0 && (
+              <div class="row"><span class="x">Connecting to GitHub on next build…</span></div>
+            )}
+            {repos.map((r) => (
+              <a class="row" href={r.url}>
+                <span class="t">★{r.stars}</span>
+                <span class="r">{r.name}</span>
+                <span class="x">{r.description ?? r.language ?? ''}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <div class="card reveal">
+          <div class="lab">↳ Latest Writing</div>
+          <div class="feed">
+            {latest.map((p) => (
+              <a class="row" href={`/writing/${p.id}`}>
+                <span class="t">{p.data.date.getFullYear()}</span>
+                <span class="x">{p.data.title}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORK -->
+    <section id="work">
+      <div class="sec-head reveal"><h2>Selected Work</h2><span class="idx">002 / From GitHub + Case Studies</span></div>
+      <div class="work">
+        {projects.map((p) => (
+          <a class={`proj ${p.data.accent} reveal`} href={`/work/${p.id}`}>
+            <div class="bgc"></div>
+            <div class="ov">
+              <h3>{p.data.title}</h3>
+              <div class="meta">{[p.data.role, p.data.year, p.data.stack[0]].filter(Boolean).join(' · ')}</div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- WRITING -->
+    <section id="writing">
+      <div class="sec-head reveal"><h2>Writing & Ideas</h2><span class="idx">003 / Markdown</span></div>
+      <div class="posts">
+        {posts.slice(0, 5).map((p) => (
+          <a class="post reveal" href={p.data.external ?? `/writing/${p.id}`}>
+            <span class="d">{p.data.date.getFullYear()}</span>
+            <span class="ti">{p.data.title}</span>
+            <span class="ar">↗</span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- HHMM -->
+    <section id="hhmm">
+      <div class="hhmm reveal">
+        <div>
+          <h3>🎃 Halloween Horror Movie Month</h3>
+          <p>17 years and counting. Every October I watch (too many) horror films and write it up. The longest-running thing on this site — and the most fun.</p>
+        </div>
+        <a class="btn" href="/hhmm">Enter the Archive →</a>
+      </div>
+    </section>
+  </div>
+</Base>

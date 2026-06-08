@@ -1,0 +1,33 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../config/site';
+import { resume } from '../data/resume.ts';
+---
+
+<Base title="About">
+  <div class="wrap">
+    <div class="page-head">
+      <div class="ey">{site.tagline} · {site.location}</div>
+      <h1>About</h1>
+    </div>
+    <section style="padding-top:1vh">
+      <div class="prose">
+        <p>{resume.summary}</p>
+        <p>
+          I'm a product design and design-engineering leader based in {site.location}.
+          I care about teams that ship — and about being the kind of leader who can
+          still open the editor and build the thing.
+        </p>
+        <p>
+          This site is itself an experiment: it's self-hosted and largely maintained
+          by AI agents that draft updates and open pull requests for me to approve.
+        </p>
+        <p>
+          Find me on <a href={site.social.github}>GitHub</a> and
+          <a href={site.social.linkedin}> LinkedIn</a>, see the
+          <a href="/resume"> resume</a>, or <a href={site.social.email}>say hello</a>.
+        </p>
+      </div>
+    </section>
+  </div>
+</Base>
