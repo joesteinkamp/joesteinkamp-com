@@ -67,8 +67,9 @@ section{padding:9vh 0}
 .sec-head .idx{font-family:var(--mono);color:var(--muted);font-size:14px}
 
 /* now hub */
-.now{display:grid;grid-template-columns:1.1fr 1fr;gap:18px}
-.card{border:1px solid var(--line);border-radius:18px;padding:26px;background:rgba(255,255,255,.02);
+/* minmax(0,…) lets tracks shrink below their content's min-content width (grid blowout fix) */
+.now{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:18px}
+.card{min-width:0;border:1px solid var(--line);border-radius:18px;padding:26px;background:rgba(255,255,255,.02);
   transition:transform .3s,border-color .3s,background .3s}
 .card:hover{transform:translateY(-4px);border-color:rgba(212,255,0,.5);background:rgba(212,255,0,.04)}
 .card .lab{font-family:var(--mono);font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
@@ -85,8 +86,8 @@ section{padding:9vh 0}
   padding:5px 11px;border-radius:999px;color:var(--muted)}
 
 /* work grid */
-.work{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-.proj{position:relative;border:1px solid var(--line);border-radius:18px;overflow:hidden;
+.work{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.proj{min-width:0;position:relative;border:1px solid var(--line);border-radius:18px;overflow:hidden;
   min-height:260px;display:flex;flex-direction:column;justify-content:flex-end;padding:26px;transition:transform .3s}
 .proj:hover{transform:scale(.99)}
 .proj .bgc{position:absolute;inset:0;z-index:0;opacity:.9;transition:transform .5s}
@@ -103,7 +104,7 @@ section{padding:9vh 0}
 
 /* posts list */
 .posts{display:flex;flex-direction:column}
-.post{display:grid;grid-template-columns:90px 1fr auto;gap:20px;align-items:baseline;
+.post{display:grid;grid-template-columns:90px minmax(0,1fr) auto;gap:20px;align-items:baseline;
   padding:22px 8px;border-bottom:1px solid var(--line);transition:padding .25s,background .25s}
 .post:hover{padding-left:24px;background:linear-gradient(90deg,rgba(212,255,0,.06),transparent)}
 .post .d{font-family:var(--mono);font-size:13px;color:var(--muted)}
@@ -154,7 +155,7 @@ footer a:hover{color:var(--acid)}
 
 /* resume */
 .resume{max-width:760px}
-.resume .role{border-top:1px solid var(--line);padding:24px 0;display:grid;grid-template-columns:1fr auto;gap:8px 20px}
+.resume .role{border-top:1px solid var(--line);padding:24px 0;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 20px}
 .resume .role h3{font-size:1.25rem;font-weight:600}
 .resume .role .co{color:var(--muted)}
 .resume .role .pd{font-family:var(--mono);font-size:13px;color:var(--muted);text-align:right}
