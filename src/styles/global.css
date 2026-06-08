@@ -144,6 +144,12 @@ footer a:hover{color:var(--acid)}
 .prose code{font-family:var(--mono);font-size:.9em;background:rgba(255,255,255,.06);padding:2px 6px;border-radius:6px}
 .prose ul,.prose ol{padding-left:1.3em}
 .prose li+li{margin-top:.4em}
+/* keep embedded media/links inside the column so articles never scroll sideways */
+.prose img,.prose video{max-width:100%;height:auto;display:block;border-radius:12px;border:1px solid var(--line)}
+.prose a{overflow-wrap:anywhere}
+.prose pre{overflow-x:auto;background:rgba(255,255,255,.04);padding:16px;border-radius:12px}
+.prose pre code{background:none;padding:0}
+.prose table{display:block;max-width:100%;overflow-x:auto}
 
 /* resume */
 .resume{max-width:760px}
