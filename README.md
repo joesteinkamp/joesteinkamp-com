@@ -40,9 +40,10 @@ Everything lives as files (see `AGENTS.md` for schemas):
 
 ## Deploy
 
-Push/merge to `main` → GitHub Actions builds and rsyncs to the server with an
-atomic release + symlink swap. Configure these repo secrets:
+Hosted on **GitHub Pages**. Push/merge to `main` → the `Build & Deploy`
+workflow builds and publishes `dist/` to Pages. A nightly run rebuilds to
+refresh the GitHub feed. No servers, secrets, or SSH keys to manage.
 
-`DEPLOY_HOST`, `DEPLOY_USER`, `DEPLOY_KEY` (SSH private key), `DEPLOY_PATH`
-(e.g. `/var/www/joesteinkamp`). Sample web server config in
-[`deploy/nginx.conf`](./deploy/nginx.conf).
+Custom domain is set by [`public/CNAME`](./public/CNAME) (currently
+`jsweb.joesteinkamp.com` for staging). At cutover, change it to
+`joesteinkamp.com`, update `site` in `astro.config.mjs`, and point DNS at Pages.

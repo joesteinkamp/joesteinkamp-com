@@ -72,21 +72,25 @@ Frontmatter is validated by Astro content-collection schemas, so a malformed age
                          ▼
 ┌─ GitHub Action on push to main ───────────────────────────┐
 │  1. npm ci && npm run build  (fetches GitHub data)         │
-│  2. rsync dist/ over SSH to the Ubuntu box                 │
-│  3. atomic symlink swap → nginx serves new release         │
+│  2. upload dist/ as a Pages artifact                       │
+│  3. deploy-pages → published to GitHub Pages               │
 └───────────────────────────────────────────────────────────┘
 ```
 
-- **A scheduled rebuild** (e.g. nightly GH Action) re-runs the build so the GitHub feed stays current without any content change.
+- **A scheduled rebuild** (nightly GH Action) re-runs the build so the GitHub feed stays current without any content change.
 - **`AGENTS.md`** in the repo root documents the content schemas and rules so any agent (Claude Code or otherwise) can contribute safely.
-- **Secrets:** an SSH deploy key + GitHub API token live in GitHub Actions secrets, never in the repo.
+- **No secrets to manage:** Pages deploys with the workflow's built-in `GITHUB_TOKEN`. No SSH keys, no server.
 
-## 7. Deploy & cutover
+## 7. Hosting & cutover
 
-- **Phase 1 — stage:** deploy the new site to `jsweb.joesteinkamp.com` behind nginx (separate server block / docroot). WordPress keeps running at the apex.
+Hosted on **GitHub Pages** (chosen over self-hosting for lowest maintenance — no
+box to patch, free CDN + HTTPS). Served at the domain root via a custom domain
+(`public/CNAME`), so no `base` path is needed.
+
+- **Phase 1 — stage:** Pages serves at `jsweb.joesteinkamp.com` (DNS: `CNAME jsweb → joesteinkamp.github.io`). WordPress keeps running at the apex.
 - **Phase 2 — validate:** content migrated, links checked, performance/SEO verified on the subdomain.
-- **Phase 3 — swap:** point `joesteinkamp.com` docroot at the new build, redirect old WordPress URLs, retire WordPress (keep a DB/file export as archive).
-- **Releases** live in `/var/www/joesteinkamp/releases/<timestamp>` with a `current` symlink for instant rollback.
+- **Phase 3 — swap:** change `public/CNAME` + `site` to `joesteinkamp.com`, point apex DNS at Pages (A/AAAA + `www` CNAME), redirect old WordPress URLs, retire WordPress (keep an export as archive).
+- **Rollback** = revert the commit; the previous build redeploys.
 
 ## 8. WordPress migration recommendation
 

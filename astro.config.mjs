@@ -1,7 +1,9 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 
-// During staging this is served from jsweb.joesteinkamp.com; flip to the apex at cutover.
+// Deployed to GitHub Pages with a custom domain (public/CNAME), so the site is
+// served at the domain root — no `base` needed. Staging at jsweb.joesteinkamp.com;
+// at cutover, change public/CNAME + this `site` to https://joesteinkamp.com.
 export default defineConfig({
-  site: 'https://joesteinkamp.com',
+  site: 'https://jsweb.joesteinkamp.com',
 });

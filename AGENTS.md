@@ -85,6 +85,5 @@ summary: string
 
 `npm run build` runs `scripts/fetch-github.mjs` (writes `github.json`) then
 `astro build` → static files in `dist/`. On merge to `main`, the
-`Build & Deploy` workflow rsyncs `dist/` to a timestamped release dir on the
-server and flips the `current` symlink (instant rollback). A nightly run rebuilds
-to refresh the GitHub feed. See `SPEC.md` for the full picture.
+`Build & Deploy` workflow publishes `dist/` to **GitHub Pages**. A nightly run
+rebuilds to refresh the GitHub feed. See `SPEC.md` for the full picture.

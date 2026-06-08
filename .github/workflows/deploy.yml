@@ -1,4 +1,4 @@
-name: Build & Deploy
+name: Build & Deploy (GitHub Pages)
 
 on:
   push:
@@ -8,12 +8,19 @@ on:
   schedule:
     - cron: '17 8 * * *'
 
+# Permissions required to deploy to GitHub Pages.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deploy; let in-progress runs finish.
 concurrency:
-  group: deploy
-  cancel-in-progress: true
+  group: pages
+  cancel-in-progress: false
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -30,24 +37,16 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Configure SSH
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.DEPLOY_KEY }}" > ~/.ssh/id_ed25519
-          chmod 600 ~/.ssh/id_ed25519
-          ssh-keyscan -H "${{ secrets.DEPLOY_HOST }}" >> ~/.ssh/known_hosts
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
 
-      - name: Deploy (atomic release + symlink swap)
-        env:
-          HOST: ${{ secrets.DEPLOY_HOST }}
-          SSH_USER: ${{ secrets.DEPLOY_USER }}
-          BASE: ${{ secrets.DEPLOY_PATH }} # e.g. /var/www/joesteinkamp
-        run: |
-          set -euo pipefail
-          STAMP=$(date +%Y%m%d%H%M%S)
-          REL="$BASE/releases/$STAMP"
-          ssh "$SSH_USER@$HOST" "mkdir -p '$REL'"
-          rsync -az --delete dist/ "$SSH_USER@$HOST:$REL/"
-          # flip the 'current' symlink, then prune all but the last 5 releases
-          ssh "$SSH_USER@$HOST" "ln -sfn '$REL' '$BASE/current' && ls -dt $BASE/releases/*/ | tail -n +6 | xargs -r rm -rf"
-          echo "Deployed $STAMP"
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
