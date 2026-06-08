@@ -10,7 +10,7 @@ export const site = {
     email: 'mailto:joe@joesteinkamp.com',
   },
   nav: [
-    { label: 'Now', href: '/' },
+    { label: 'Home', href: '/' },
     { label: 'Work', href: '/work' },
     { label: 'Writing', href: '/writing' },
     { label: 'HHMM', href: '/hhmm' },
