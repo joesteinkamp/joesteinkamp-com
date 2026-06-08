@@ -5,11 +5,11 @@ summary: "Notion How They Describe Themselves Experience Highlights Notion Scree
 tags: [design, saas, craft]
 ---
 
-> Migrated from the previous WordPress site. Images still point at the old media library — rehost before retiring WordPress.
+> Migrated from the previous WordPress site.
 
 ## Notion
 
-![](https://screenshots.designknowledgebase.com/Web/Notion/screenshot-www.notion.so-2020.03.31-21_21_09.png)
+![](/images/external/screenshots.designknowledgebase.com/screenshot-www.notion.so-2020.03.31-21_21_09.png)
 
 #### How They Describe Themselves
 
@@ -30,7 +30,7 @@ tags: [design, saas, craft]
 
 ## Superhuman
 
-![](https://screenshots.designknowledgebase.com/Web/Superhuman/4afefb3420eb3165a85316ad98ab96a9.png)
+![](/images/external/screenshots.designknowledgebase.com/4afefb3420eb3165a85316ad98ab96a9.png)
 
 #### How They Describe Themselves
 
@@ -49,7 +49,7 @@ tags: [design, saas, craft]
 
 ## Airtable
 
-![image](https://screenshots.designknowledgebase.com/Web/Airtable/Screen%20Shot%202019-11-04%20at%209.21.46%20AM.png)
+![image](/images/external/screenshots.designknowledgebase.com/Screen-Shot-2019-11-04-at-9.21.46-AM.png)
 
 #### How They Describe Themselves
 
@@ -68,7 +68,7 @@ tags: [design, saas, craft]
 
 ## Trello by Atlassian
 
-![image](https://screenshots.designknowledgebase.com/Web/Trello/Screen%20Shot%202020-05-25%20at%209.46.06%20PM.png)
+![image](/images/external/screenshots.designknowledgebase.com/Screen-Shot-2020-05-25-at-9.46.06-PM.png)
 
 #### How They Describe Themselves
 
@@ -89,7 +89,7 @@ tags: [design, saas, craft]
 
 ## Slack
 
-![image](https://screenshots.designknowledgebase.com/Web/Slack/Screen%20Shot%202021-01-05%20at%202.09.10%20PM.png)
+![image](/images/external/screenshots.designknowledgebase.com/Screen-Shot-2021-01-05-at-2.09.10-PM.png)
 
 #### How They Describe Themselves
 
@@ -110,7 +110,7 @@ tags: [design, saas, craft]
 
 ## Figma
 
-![image](https://screenshots.designknowledgebase.com/Web/Figma/Screen%20Shot%202021-01-07%20at%207.59.08%20AM.png)
+![image](/images/external/screenshots.designknowledgebase.com/Screen-Shot-2021-01-07-at-7.59.08-AM.png)
 
 #### How They Describe Themselves
 

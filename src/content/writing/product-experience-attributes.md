@@ -5,7 +5,7 @@ summary: "The Balance “I believe many UX designers are stuck evaluating the qu
 tags: [product, experience, strategy]
 ---
 
-> Migrated from the previous WordPress site. Images still point at the old media library — rehost before retiring WordPress.
+> Migrated from the previous WordPress site.
 
 # The Balance
 
@@ -17,7 +17,7 @@ We often talk about product development as a linear process where at each step o
 
 This is not accurate. Products quality doesn’t improve block by block. The product is not climbing this imaginary quality ladder. And yet we see models like below.
 
-![](http://joesteinkamp.com/wp-content/uploads/2017/11/Maslovs-Hierarchy-of-Design.png)
+![](/images/2017/11/Maslovs-Hierarchy-of-Design.png)
 
 By Aaron Walter. Asset from: <http://www.kaoskontrolkaos.com/359>
 
@@ -25,7 +25,7 @@ The most common model you see is a translation of Maslov’s hierarchy of needs.
 
 This model is incredibly flawed and damaging to a product team. It makes it so easy to look at the model and say we shouldn’t worry about delight because we’re still working on the function. That’s why you see a lot articles explaining that an MVP should capture a part of every block, such as the modification below.
 
-![](http://joesteinkamp.com/wp-content/uploads/2017/11/Maslovs-MVP.png)
+![](/images/2017/11/Maslovs-MVP.png)
 
 <https://twitter.com/jopas/status/515301088660959233>
 
@@ -46,7 +46,7 @@ Your product should be an appropriate balance of the attributes that fit your ne
 
 Introducing the primary building blocks of an experience. Similar to models discussed above, the following six attributes are, in my opinion, the most basic traits of a product experience.
 
-[![](http://joesteinkamp.com/wp-content/uploads/2017/11/Product-Exp-Attributes-Legend.png)](http://joesteinkamp.com/wp-content/uploads/2017/11/Product-Exp-Attributes-Legend.png)
+[![](/images/2017/11/Product-Exp-Attributes-Legend.png)](/images/2017/11/Product-Exp-Attributes-Legend.png)
 
 They are equally stacked here but as you’ll see later the sizes are flexible.
 
@@ -80,13 +80,13 @@ They are equally stacked here but as you’ll see later the sizes are flexible.
 
 # Focus
 
-[![](http://joesteinkamp.com/wp-content/uploads/2017/11/Product-Exp-Attributes-Focus.png)](http://joesteinkamp.com/wp-content/uploads/2017/11/Product-Exp-Attributes-Focus.png)
+[![](/images/2017/11/Product-Exp-Attributes-Focus.png)](/images/2017/11/Product-Exp-Attributes-Focus.png)
 
 The six core attributes can be organized into two categories, which help establish ownership and how you can best measure them.
 
 # Scoring & Product Quality Scale
 
-[![](http://joesteinkamp.com/wp-content/uploads/2017/11/Product-Exp-Attributes-Product-Quality-Scale.png)](http://joesteinkamp.com/wp-content/uploads/2017/11/Product-Exp-Attributes-Product-Quality-Scale.png)
+[![](/images/2017/11/Product-Exp-Attributes-Product-Quality-Scale.png)](/images/2017/11/Product-Exp-Attributes-Product-Quality-Scale.png)
 
 One of the goals of the pyramid models is to be able to measure where your product’s current quality is at- or at least guide you. My proposed model is more flexible but can be used to measure your product’s quality or establish a visualization of your prioritization.
 
@@ -184,13 +184,13 @@ The blocks can be represented in different sizes to visualize the score. Scores 
 
 # Examples
 
-[![](http://joesteinkamp.com/wp-content/uploads/2017/11/Product-Exp-Attributes-Examples.png)](http://joesteinkamp.com/wp-content/uploads/2017/11/Product-Exp-Attributes-Examples.png)
+[![](/images/2017/11/Product-Exp-Attributes-Examples.png)](/images/2017/11/Product-Exp-Attributes-Examples.png)
 
 # Versatility
 
 The scale also works well for describing other aspects of a product. The quality of a product is often a good indicator where the market is. With only changing the labels the scale is a good indicator of market maturity.
 
-[![](http://joesteinkamp.com/wp-content/uploads/2017/11/Product-Exp-Attributes-Market-Scales.png)](http://joesteinkamp.com/wp-content/uploads/2017/11/Product-Exp-Attributes-Market-Scales.png)
+[![](/images/2017/11/Product-Exp-Attributes-Market-Scales.png)](/images/2017/11/Product-Exp-Attributes-Market-Scales.png)
 
 As the market becomes more mature products compete at the higher attributes. The most mature markets compete within Desirability.
 
@@ -255,7 +255,7 @@ Aspects of an experience that are not typical for encouraging a great experience
 
 # Download Sketch Toolkit
 
-[Product Exp Attributes Sketch Toolkit](http://joesteinkamp.com/wp-content/uploads/2017/11/Product-Exp-Attributes-Sketch-Toolkit.zip)
+[Product Exp Attributes Sketch Toolkit](/images/2017/11/Product-Exp-Attributes-Sketch-Toolkit.zip)
 
 # Some References
 

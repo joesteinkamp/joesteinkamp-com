@@ -5,7 +5,7 @@ summary: "Many of our digital products these days are becoming more complex and 
 tags: [product, onboarding, ux]
 ---
 
-> Migrated from the previous WordPress site. Images still point at the old media library — rehost before retiring WordPress.
+> Migrated from the previous WordPress site.
 
 Many of our digital products these days are becoming more complex and multi-faceted. As our products continue to grow, it causes a multitude of problems. One, the increased complexity and depth can quickly erode all the ease of use efforts you’ve performed since your MVP. Two, a problem arises where only a small fraction of your users are getting all the possible value out of your product.
 
@@ -57,15 +57,15 @@ No pattern or best practice is appropriate for every context and postboarding is
 
 **Screen/Modal**Directly after the user completes their task and receives feedback, show a full-screen takeover that either directs the user to appropriate next step in their journey or provides them with an easy opt-in action to enable additional abilities.
 
-[![](http://joesteinkamp.com/wp-content/uploads/2017/05/Post-boarding-Screen-Pattern.gif)](http://joesteinkamp.com/wp-content/uploads/2017/05/Post-boarding-Screen-Pattern.gif)
+[![](/images/2017/05/Post-boarding-Screen-Pattern.gif)](/images/2017/05/Post-boarding-Screen-Pattern.gif)
 
 **Notification**When an experience has no conclusive end, send a notification shortly after the session has ended to provide a quick action or an informational tip. If your users are comfortable with actionable notifications, support the action that way.
 
-[![](http://joesteinkamp.com/wp-content/uploads/2017/05/Post-boarding-Notification-Pattern.gif)](http://joesteinkamp.com/wp-content/uploads/2017/05/Post-boarding-Notification-Pattern.gif)
+[![](/images/2017/05/Post-boarding-Notification-Pattern.gif)](/images/2017/05/Post-boarding-Notification-Pattern.gif)
 
 **Passive In-App Message**When the message or action you’d like to present the users is more supplemental, display an in-app message on the home screen.
 
-[![](http://joesteinkamp.com/wp-content/uploads/2017/05/Post-boarding-In-App-Pattern.gif)](http://joesteinkamp.com/wp-content/uploads/2017/05/Post-boarding-In-App-Pattern.gif)
+[![](/images/2017/05/Post-boarding-In-App-Pattern.gif)](/images/2017/05/Post-boarding-In-App-Pattern.gif)
 
 ## Conclusion
 

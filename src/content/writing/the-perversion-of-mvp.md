@@ -5,7 +5,7 @@ summary: "The original definition of an MVP was to test a new product in the mar
 tags: [product, process]
 ---
 
-> Migrated from the previous WordPress site. Images still point at the old media library — rehost before retiring WordPress.
+> Migrated from the previous WordPress site.
 
 The original definition of an MVP was to test a new product in the market to see if it’s viable. The product was either successful and you learned how to improve it or the product was a failure and learned why and what to pivot to.
 
@@ -23,7 +23,7 @@ MVP was supposed to be only at the beginning of a product. It is often misused w
 
 ## Redefining MVP
 
-![](https://cdn-images-1.medium.com/max/800/1*AUh-FAqyNZA0tRNSIJ3jng.png)
+![](/images/external/cdn-images-1.medium.com/1*AUh-FAqyNZA0tRNSIJ3jng.png)
 
 <https://twitter.com/jopas/status/515301088660959233>
 

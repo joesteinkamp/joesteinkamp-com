@@ -5,7 +5,7 @@ summary: "Design is funny and challenging to define due to some of its ambiguous
 tags: [design, definitions]
 ---
 
-> Migrated from the previous WordPress site. Images still point at the old media library — rehost before retiring WordPress.
+> Migrated from the previous WordPress site.
 
 Design is funny and challenging to define due to some of its ambiguous nature (it’s a process specifically targets problems with no clear answers). Here are some of my favorite definitions I’ve come across from others.
 
