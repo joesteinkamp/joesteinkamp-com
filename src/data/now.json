@@ -1,5 +1,5 @@
 {
-  "status": "Just relaunched joesteinkamp.com as a self-updating, agent-maintained site.",
-  "currently": "Fresh off relaunching this site as a self-updating, agent-maintained build on GitHub Pages. Now digging into how design leaders should actually work with AI across the product loop — and shipping small tools along the way.",
-  "pills": ["Astro", "Design Eng", "Agentic Content", "GitHub Pages"]
+  "status": "Shipping AI-native tools at the intersection of design and engineering.",
+  "currently": "Shipping a suite of agentic tools — from a natural-language GUI library and design system automation to an AGENTS.md starter kit and Chrome screenshot tooling. The question underneath it all: what does it actually look like for a design leader to build with AI rather than just direct it?",
+  "pills": ["AI Tooling", "Design Engineering", "Chrome Extensions", "Open Source"]
 }
