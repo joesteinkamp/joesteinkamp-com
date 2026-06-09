@@ -118,6 +118,7 @@ section{padding:9vh 0}
   display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
 .hhmm h3{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:700;letter-spacing:-.02em}
 .hhmm p{color:var(--muted);margin-top:10px;max-width:460px;font-family:var(--mono);font-size:14px}
+.hhmm.feature{background:radial-gradient(60% 100% at 100% 0,rgba(91,91,255,.20),transparent),radial-gradient(50% 100% at 0 100%,rgba(0,229,255,.12),transparent),rgba(255,255,255,.02)}
 .btn{font-family:var(--mono);font-size:14px;border:1px solid var(--ink);padding:14px 22px;
   border-radius:999px;transition:background .2s,color .2s,border-color .2s;display:inline-block}
 .btn:hover{background:var(--acid);border-color:var(--acid);color:#000}
