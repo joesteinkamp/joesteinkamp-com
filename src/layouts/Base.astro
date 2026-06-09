@@ -20,6 +20,8 @@ const isCurrent = (href: string) =>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="alternate" type="application/rss+xml" title={`${site.name} — Writing`} href="/rss.xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -49,6 +51,7 @@ const isCurrent = (href: string) =>
           <a href={site.social.email}>Email ↗</a>
           <a href={site.social.github}>GitHub ↗</a>
           <a href={site.social.linkedin}>LinkedIn ↗</a>
+          <a href="https://www.designknowledgebase.com">Knowledge Base ↗</a>
           <a href="/resume">Resume ↗</a>
           <a href="/design">Site's System ↗</a>
           <span style="margin-top:14px;color:#55556a">© 2026 {site.name} · {site.location}</span>
