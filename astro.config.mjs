@@ -2,11 +2,10 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
-// Deployed to GitHub Pages with a custom domain (public/CNAME), so the site is
-// served at the domain root — no `base` needed. Staging at newsite.joesteinkamp.com;
-// at cutover, change public/CNAME + this `site` to https://joesteinkamp.com.
+// Deployed to GitHub Pages with a custom domain (public/CNAME), served at the
+// domain root — no `base` needed. Live at the apex joesteinkamp.com.
 export default defineConfig({
-  site: 'https://newsite.joesteinkamp.com',
+  site: 'https://joesteinkamp.com',
   integrations: [sitemap()],
   // Dev only (ignored at build): lets `npm run dev -- --host 0.0.0.0` be reached
   // over Tailscale MagicDNS (e.g. http://clawbot.crane-cod.ts.net:4321) instead of
