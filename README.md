@@ -6,6 +6,7 @@ output served by nginx on a self-hosted box, maintained largely by AI agents via
 pull requests.
 
 - **Design / architecture:** [`SPEC.md`](./SPEC.md)
+- **Design principles:** [`DESIGN.md`](./DESIGN.md)
 - **How agents maintain it:** [`AGENTS.md`](./AGENTS.md)
 - **Approved visual direction:** [`mockups/home.html`](./mockups/home.html)
 

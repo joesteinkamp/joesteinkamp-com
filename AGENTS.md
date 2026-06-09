@@ -76,7 +76,8 @@ summary: string
   fails, fix it — do not open a red PR.
 - **Stay in your lane.** Content and data files only. Changes to layout, styles,
   build, or deploy (`src/layouts`, `src/styles`, `src/pages`, `astro.config.mjs`,
-  `.github/`, `deploy/`) need an explicit human request.
+  `.github/`, `deploy/`) need an explicit human request. When such a change *is*
+  requested, follow the design principles in [`DESIGN.md`](./DESIGN.md).
 - **No secrets, ever.** Deploy keys and tokens live only in GitHub Actions secrets.
 - **Voice:** confident, plain, no buzzwords. Title Case for headings/labels/nav;
   sentence case for body prose. Don't add "written by AI" disclaimers.
