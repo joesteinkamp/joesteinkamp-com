@@ -38,21 +38,21 @@ const repos = (github.repos ?? []).slice(0, 3);
           <div class="pillz">{now.pills.map((p) => <span class="pill">{p}</span>)}</div>
         </div>
 
-        <div class="card reveal">
+        <a class="card reveal" href={site.social.github}>
           <div class="lab">↳ Latest From GitHub</div>
           <div class="feed">
             {repos.length === 0 && (
               <div class="row"><span class="x">Connecting to GitHub on next build…</span></div>
             )}
             {repos.map((r) => (
-              <a class="row" href={r.url}>
+              <div class="row">
                 <span class="t">★{r.stars}</span>
                 <span class="r">{r.name}</span>
                 <span class="x">{r.description ?? r.language ?? ''}</span>
-              </a>
+              </div>
             ))}
           </div>
-        </div>
+        </a>
 
         <div class="card reveal">
           <div class="lab">↳ Latest Writing</div>
@@ -73,7 +73,7 @@ const repos = (github.repos ?? []).slice(0, 3);
       <div class="hhmm feature reveal">
         <div>
           <h3>Design Knowledge Base</h3>
-          <p>An open-source library of design documentation — framework, craft, mindset, operations, and leadership in one structured place. The resource I wished existed, built in the open.</p>
+          <p>An open-source library of design documentation & apps — frameworks, tools, operations, and leadership in one structured place. The resource I wished existed, built in the open.</p>
         </div>
         <a class="btn" href="https://www.designknowledgebase.com">Explore the Base ↗</a>
       </div>
