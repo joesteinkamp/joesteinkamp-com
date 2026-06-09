@@ -4,6 +4,7 @@ export const site = {
   location: 'St. Louis, MO',
   url: 'https://joesteinkamp.com',
   github: 'joesteinkamp',
+  analyticsId: 'G-280ZJM21X4',
   social: {
     github: 'https://github.com/joesteinkamp',
     linkedin: 'https://linkedin.com/in/joesteinkamp',
