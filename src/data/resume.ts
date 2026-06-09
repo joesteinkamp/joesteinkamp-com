@@ -2,9 +2,7 @@
 // the /resume page renders from this and stays in sync with the site.
 //
 // summary / education / skills are migrated from the real old-site bio.
-// EXPERIENCE: companies + titles are from public sources; the DATE RANGES are
-// inferred (portfolio timeline + the AlphaSense/Tegus acquisition) and need
-// Joe's confirmation. Fix any that are off.
+// EXPERIENCE: titles and dates confirmed by Joe (2026-06).
 
 export interface Role {
   company: string;
@@ -38,7 +36,7 @@ export const resume = {
     {
       company: 'Tegus',
       role: 'Head of Design',
-      period: '2021 — 2024',
+      period: '2019 — 2024',
       location: 'Chicago, IL',
       highlights: [
         'Built and led the design function for the market-intelligence platform serving institutional investors, corporations, and consultancies.',
@@ -47,7 +45,7 @@ export const resume = {
     {
       company: 'Shiftgig',
       role: 'Director, Design',
-      period: '2018 — 2021',
+      period: '2017 — 2019',
       location: 'Chicago, IL',
       highlights: [
         'Led design for the on-demand staffing marketplace connecting gig workers with employers — worker scheduling, shift requests, and the marketplace experience.',
@@ -56,7 +54,7 @@ export const resume = {
     {
       company: 'Walgreens',
       role: 'Senior User Experience Designer',
-      period: '2013 — 2018',
+      period: '2011 — 2017',
       location: 'Deerfield, IL',
       highlights: [
         'Designed Walgreens mobile experiences across iOS and Android — app redesign, Rx status, and pill reminder — and consulted on Walgreens.com.',
