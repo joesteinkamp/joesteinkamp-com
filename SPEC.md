@@ -11,20 +11,20 @@ A craft-forward personal site for a product design & design-engineering leader. 
 
 ## 2. Non-negotiable constraints
 
-- **Self-hosted** on Joe's own Ubuntu box (`newsite.joesteinkamp.com`). No Vercel/Netlify runtime. Served by **nginx**.
+- **No server to run or patch.** Static files only, hosted on **GitHub Pages**. (The original plan was a self-hosted nginx box; Pages won for lower maintenance — see §7.)
 - **Low ongoing effort.** No CMS to babysit, no database, no plugins to patch (the WordPress pain we're escaping).
 - **Agent-maintainable.** Content is plain files in Git; agents propose changes via PR; Joe approves.
 
 ## 3. Recommended stack
 
-**Astro (static output) + nginx.** Rationale:
+**Astro (static output) on GitHub Pages.** Rationale:
 
-- **Static-first** → builds to plain HTML/CSS/JS. Nothing long-lived to crash or patch on the box; nginx just serves files. This is the lowest-maintenance, most robust option for a self-hosted site.
+- **Static-first** → builds to plain HTML/CSS/JS. Nothing long-lived to crash or patch; a static host just serves files. This is the lowest-maintenance, most robust option.
 - **Markdown-native content collections** → writing and projects are `.md`/`.mdx` files with typed frontmatter. Perfect for agents (and for migrating WordPress posts) and for `git diff` review.
 - **Islands architecture** → the bold animated hero / interactive bits ship as a single hydrated component (vanilla + GSAP/Canvas, or a Svelte/React island) while the rest stays static and fast.
 - **Build-time data fetch** → GitHub activity is pulled during the build via the GitHub API and baked in. No runtime API server needed; freshness comes from scheduled rebuilds.
 
-> Next.js static export would also work, but Astro is the cleaner fit for content + self-host + minimal maintenance. We keep the option to add a tiny API service later only if something truly dynamic is needed (e.g. a contact form).
+> Next.js static export would also work, but Astro is the cleaner fit for content + static hosting + minimal maintenance. We keep the option to add a tiny API service later only if something truly dynamic is needed (e.g. a contact form).
 
 ## 4. Information architecture (v1)
 
@@ -105,7 +105,7 @@ After reviewing the live sitemap:
 
 1. **Spec** (this doc) ✅
 2. **Mockup** — self-contained HTML of the bold homepage to lock the look (`mockups/home.html`).
-3. **Scaffold** — Astro project, content schemas, `AGENTS.md`, GitHub Action deploy, nginx config; deploy skeleton to the subdomain.
+3. **Scaffold** — Astro project, content schemas, `AGENTS.md`, GitHub Pages deploy workflow; staging on a subdomain.
 4. Migrate the gem essays + HHMM; wire the GitHub feed; cut over.
 
 ## 10. Open questions for later
