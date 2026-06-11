@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import Lightbox from '../../components/Lightbox.astro';
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -30,4 +31,5 @@ const dateStr = d.date.toLocaleDateString('en-US', {
       <article class="prose"><Content /></article>
     </section>
   </div>
+  <Lightbox />
 </Base>
