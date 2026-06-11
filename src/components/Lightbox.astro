@@ -1,0 +1,95 @@
+---
+// Progressively enhances images inside .prose articles so they open in an
+// in-page full-screen viewer (lightGallery) with zoom/fullscreen controls,
+// instead of navigating to the raw image URL.
+//
+// Scope:
+//   - Bare images            ![](img)            → lightbox
+//   - Self-linked images     [![alt](img)](img)  → lightbox
+//   - Images linking out     [![alt](img)](url)  → left alone (intentional link)
+// Each .prose container is its own gallery, so arrow keys page through the
+// images within a single post/project.
+---
+
+<script>
+  import lightGallery from 'lightgallery';
+  import lgZoom from 'lightgallery/plugins/zoom';
+  import lgFullscreen from 'lightgallery/plugins/fullscreen';
+  import lgThumbnail from 'lightgallery/plugins/thumbnail';
+
+  import 'lightgallery/css/lightgallery.css';
+  import 'lightgallery/css/lg-zoom.css';
+  import 'lightgallery/css/lg-fullscreen.css';
+  import 'lightgallery/css/lg-thumbnail.css';
+
+  const IMAGE_EXT = /\.(jpe?g|png|gif|webp|avif|svg|bmp)(\?.*)?$/i;
+
+  function isImageHref(href: string | null): boolean {
+    return !!href && IMAGE_EXT.test(href);
+  }
+
+  function setup(container: HTMLElement) {
+    const images = Array.from(container.querySelectorAll<HTMLImageElement>('img'));
+    let hasItems = false;
+
+    for (const img of images) {
+      const anchor = img.closest('a');
+
+      if (anchor) {
+        // Only hijack anchors that point at an image (self-linked screenshots).
+        // External links (e.g. IMDB posters) keep their normal behaviour.
+        if (!isImageHref(anchor.getAttribute('href'))) continue;
+        anchor.classList.add('lb-item');
+        if (img.alt && !anchor.dataset.subHtml) anchor.dataset.subHtml = img.alt;
+        hasItems = true;
+      } else {
+        // Bare image — wrap it in an anchor pointing to itself.
+        const src = img.getAttribute('src');
+        if (!src) continue;
+        const link = document.createElement('a');
+        link.href = src;
+        link.classList.add('lb-item');
+        if (img.alt) link.dataset.subHtml = img.alt;
+        img.parentNode?.insertBefore(link, img);
+        link.appendChild(img);
+        hasItems = true;
+      }
+    }
+
+    if (!hasItems) return;
+
+    lightGallery(container, {
+      selector: '.lb-item',
+      plugins: [lgZoom, lgFullscreen, lgThumbnail],
+      speed: 350,
+      download: false,
+      // Single zoom control: the default `actualSize` button is itself a toggle
+      // — its icon swaps between zoom-in (fit) and zoom-out (1:1) and clicking
+      // toggles between the two. We deliberately leave `showZoomInOutIcons` off
+      // (its default) so the extra dedicated +/- buttons don't appear.
+      // On touch devices lightGallery hides the toolbar controls by default;
+      // keep the close icon so there's always a visible way out (tap-to-close
+      // also stays on via the default closeOnTap).
+      mobileSettings: { controls: true, showCloseIcon: true, download: false },
+      // GPLv3 (open-source) usage of lightGallery — silences the license notice.
+      licenseKey: '0000-0000-0000-0000',
+    });
+  }
+
+  document.querySelectorAll<HTMLElement>('.prose').forEach(setup);
+</script>
+
+<style is:global>
+  /* Signal that prose images are interactive. */
+  .prose .lb-item {
+    display: block;
+    cursor: zoom-in;
+    border: 0;
+  }
+  .prose .lb-item img {
+    transition: opacity 0.2s ease;
+  }
+  .prose .lb-item:hover img {
+    opacity: 0.9;
+  }
+</style>

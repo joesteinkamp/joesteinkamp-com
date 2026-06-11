@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import Lightbox from '../../components/Lightbox.astro';
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -30,4 +31,5 @@ const d = project.data;
       </div>
     </section>
   </div>
+  <Lightbox />
 </Base>
