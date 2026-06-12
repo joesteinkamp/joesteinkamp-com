@@ -13,7 +13,7 @@ const { Content } = await render(project);
 const d = project.data;
 ---
 
-<Base title={d.title} description={d.summary}>
+<Base title={d.title} description={d.summary} image={d.cardImage} ogType="article">
   <div class="wrap">
     <div class="page-head">
       <a class="back" href="/work">← Work</a>
