@@ -82,9 +82,10 @@ const isCurrent = (href: string) =>
           cur.style.transform = `translate(${cx}px,${cy}px) translate(-50%,-50%)`;
           requestAnimationFrame(loop);
         })();
-        document.querySelectorAll('a,.card,.proj,.btn,h1').forEach((el) => {
-          el.addEventListener('mouseenter', () => cur.classList.add('big'));
-          el.addEventListener('mouseleave', () => cur.classList.remove('big'));
+        // Delegated so the dot also grows over elements added after load
+        // (e.g. anchors the lightbox wraps around prose images).
+        document.addEventListener('mouseover', (e) => {
+          cur.classList.toggle('big', !!e.target.closest?.('a,.card,.proj,.btn,h1'));
         });
       }
       // scroll reveal

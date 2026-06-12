@@ -11,7 +11,7 @@ The site is a **dark, brutalist-leaning, neon-accented personal site** built for
 1. **Content first, chrome second.** Typography and whitespace carry the design. Decoration (glow, cursor, gradients) is subtle and never competes with reading.
 2. **One source of truth.** All design tokens live in `:root` of a single CSS file. No Tailwind, no CSS modules, no component-scoped style sprawl. If you need a value, it should already be a variable — add one rather than hardcoding.
 3. **Fluid over fixed.** Sizing scales smoothly with the viewport via `clamp()`. We have exactly **one** media-query breakpoint; everything else flexes.
-4. **Performance is a feature.** No client framework, minimal JS (custom cursor + scroll-reveal only). Static HTML out of Astro. Don't add a dependency to solve a CSS problem.
+4. **Performance is a feature.** No client framework, minimal JS (custom cursor, scroll-reveal, and the image lightbox). Static HTML out of Astro. Don't add a dependency to solve a CSS problem.
 5. **Self-documenting.** The `/design` page renders real tokens and components so documentation can't silently drift from implementation.
 
 ---
@@ -108,11 +108,12 @@ Motion is **ambient and restrained** — it signals interactivity, it doesn't pe
 - **Custom cursor** (`.cursor`) — `14px` acid dot, grows to `64px` hot on interactive hover, `mix-blend-mode:difference`. Desktop only.
 - **Status dot** (`.dot`) — pulsing acid indicator (1.6s) for "live/now" signals.
 - **Scroll reveal** (`.reveal`) — opacity + slight translateY fade-in via IntersectionObserver.
+- **Image lightbox** (`<Lightbox />`, lightGallery) — content images in `.prose` open in an in-page viewer. Its chrome is re-themed to site tokens in `global.css` (the `/* lightbox */` block): `--bg` backdrop, mono captions/counter, `--acid` interactive accents. **Every page that renders body content must include the component** (see AGENTS.md). The custom cursor dot hides while the viewer is open (`body.lg-open`).
 - **Hover** — links shift `--muted → --ink`; cards lift; the hero arrow nudges and rotates.
 
 **Rules**
 - Transitions stay short (`.2s–.3s`) and ease. No bounce, no long durations.
-- Keep JS minimal — cursor and reveal are the only scripted behaviors. Don't add animation libraries.
+- Keep JS minimal — cursor, reveal, and the lightbox are the only scripted behaviors. Don't add animation libraries.
 - Effects must be skippable/harmless: nothing essential should depend on an animation completing, and decorative motion must never block content.
 
 ---

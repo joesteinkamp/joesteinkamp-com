@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import Lightbox from '../components/Lightbox.astro';
 
 // ── Design tokens, mirrored from src/styles/global.css :root ──
 // This is the single source of truth for the swatches/specimens below.
@@ -220,6 +221,27 @@ const gradients = [
       </div>
     </section>
 
+    <!-- ── LIGHTBOX ── -->
+    <section id="lightbox">
+      <div class="sec-head">
+        <h2>Image lightbox</h2>
+        <span class="idx">&lt;Lightbox /&gt; · lightGallery</span>
+      </div>
+      <div class="prose" style="max-width:760px">
+        <p>
+          Content images inside <code>.prose</code> open in an in-page viewer themed to the
+          site's tokens — click the image below. The image's <code>alt</code> text doubles as
+          the caption. Every page that renders body content mounts
+          <code>&lt;Lightbox /&gt;</code> (rule in <code>AGENTS.md</code>).
+        </p>
+        <img
+          class="ds-lb-img"
+          src="/images/2016/12/Pill-Reminder-Landing.png"
+          alt="Specimen — the alt text becomes this caption in the viewer"
+        />
+      </div>
+    </section>
+
     <!-- ── EFFECTS ── -->
     <section id="effects">
       <div class="sec-head">
@@ -232,6 +254,7 @@ const gradients = [
           <li><code>.cursor</code> / <code>#cur</code> — custom acid dot that follows the pointer and swells to a hot circle (<code>.big</code>) over interactive elements. Hidden on touch.</li>
           <li><code>.dot</code> — pulsing acid status dot (<code>@keyframes pulse</code>).</li>
           <li><code>.reveal</code> → <code>.reveal.in</code> — scroll-triggered fade/slide via IntersectionObserver in <code>Base.astro</code>.</li>
+          <li><code>&lt;Lightbox /&gt;</code> — prose images open in a token-themed lightGallery viewer; the cursor dot hides while it's open (<code>body.lg-open</code>).</li>
           <li><code>::selection</code> — acid background, black text.</li>
           <li>Hover transitions live on <code>.card</code>, <code>.proj</code>, <code>.post</code>, <code>.btn</code>, nav links.</li>
         </ul>
@@ -246,6 +269,7 @@ const gradients = [
       </p>
     </div>
   </div>
+  <Lightbox />
 </Base>
 
 <style>
@@ -311,4 +335,5 @@ const gradients = [
     margin-bottom: 14px;
   }
   .ds-row { gap: 36px; }
+  .ds-lb-img { max-width: 340px; }
 </style>

@@ -72,6 +72,15 @@ summary: string
 ## Workflow rules
 
 - **One PR per logical change.** Title: `content: add project "X"`, `content: now update`, etc.
+- **Every body-content image opens in the lightbox.** Any page that renders
+  markdown body content (an `<article class="prose">` with `<Content />`) must
+  include `<Lightbox />` from `src/components/Lightbox.astro` — it automatically
+  wires every image in the body to the in-page lightGallery viewer (bare images
+  and self-linked images open in the viewer; images that deliberately link
+  elsewhere are left alone). When adding a new page that renders body content,
+  add the component — prose images must never navigate to the raw file. An
+  image's `alt` text doubles as its caption in the viewer, so always write
+  meaningful alt text.
 - **Validate before opening a PR:** run `npm run build` (or `npm run check`). If it
   fails, fix it — do not open a red PR.
 - **Stay in your lane.** Content and data files only. Changes to layout, styles,
