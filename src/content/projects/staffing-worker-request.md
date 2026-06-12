@@ -1,23 +1,20 @@
 ---
 title: "Staffing Worker Request"
 year: 2019
-role: "Shiftgig \u00b7 Director, Design"
+role: "Shiftgig · Director, Design"
 summary: "A holistic redesign of the scheduling workers, the centerpiece of Shiftgig, focused on improving the speed of entry and increasing the quality of content."
 stack: [Product Design]
 featured: false
 accent: p3
+cardImage: "/images/2019/06/Minimum-Viable-Onsite-Shift-Desktop.png"
 order: 8
 ---
-
-> Case study migrated from the previous portfolio.
-
-A holistic redesign of the scheduling workers, the centerpiece of Shiftgig, focused on improving the speed of entry and increasing the quality of content.
 
 ## Introduction
 
 Shiftgig’s platform does a lot orchestrating a great work experience but the core is defining upcoming work and allowing workers to claim that work. In order to get the work into the system or request workers for a job, an operations user or a client directly will set up a structured description of the work. The feature that supported that was never designed holistically and evolved greatly over the years – leaving a mess of disparate flows and inconsistencies.
 
-##### **Pains**
+##### Pains
 
 - Five disparate ways of submitting requests. All with nuanced differences that support profoundly different functionality, such as requiring the same worker across a long term assignment was a separate flow.
 - Tedious to enter quality content every time because it required you to enter the information every time when the majority of the content is consistent for a given client.
@@ -28,7 +25,7 @@ Shiftgig’s platform does a lot orchestrating a great work experience but the c
 
 The solution was focused on greatly simplify content entry at the time of request by leveraging a sophisticated template system. A request consists of multiple template pieces that when put together created a comprehensive work details for the worker to see. The solution was foundational work that simplified the core of the experience with expectations to expand the functionality and better connect the user to the worker who will be seeing the work.
 
-![](/images/2019/06/Minimum-Viable-Onsite-Shift-Desktop.png)
+![Final shift request form on desktop](/images/2019/06/Minimum-Viable-Onsite-Shift-Desktop.png)
 
 ## Highlights
 
@@ -59,27 +56,27 @@ The definition phase of this work was extensive from synthesizing findings from 
 - Make it mindless to enter mindful content to support workers’ needs
 - Simple first with advanced functionality within reach
 
-- ![](/images/2019/06/Innovation-Sprint-Orders-Redesign_-Affinity-Diagram-1.png)
+![Affinity diagram from vision research](/images/2019/06/Innovation-Sprint-Orders-Redesign_-Affinity-Diagram-1.png)
 
-  Affinity Diagram from Vision Research
-- ![](/images/2019/06/Work-Request-Complexity-Diagram.png)
+![Diagram of request needs](/images/2019/06/Work-Request-Complexity-Diagram.png)
 
-  Diagram of Request Needs
-- ![](/images/2019/06/Worker-Request-Existing-Architecture.png)
-
-  Existing Architecture
+![Existing worker-request architecture](/images/2019/06/Worker-Request-Existing-Architecture.png)
 
 ### Exploration
 
 Due to the multiple times this project started there was a lot of exploration from high level conceptual differences to many nuanced iterations that lead to the final solution.
 
-- ![](/images/2019/06/Worker-Request-Vision-Concept.png)
-- ![](/images/2019/06/Worekr-Request-Architecture-Approaches.png)
-- ![](/images/2019/06/screencapture-9pcrwp-axshare-request-workers-shift-preview-html-2019-06-03-19_48_05.png)
-- ![](/images/2019/06/screencapture-75rm5p-axshare-home-html-2019-06-03-19_48_34.png)
-- ![](/images/2019/06/screencapture-9pcrwp-axshare-request-workers-shift-preview-html-2019-06-03-19_48_05.png)
-- ![](/images/2019/06/screencapture-w3y8yp-axshare-request-workers-job-post-html-2019-06-03-19_46_57.png)
-- ![](/images/2019/06/Time-Off-Flow.png)
+![Vision concept for the worker request experience](/images/2019/06/Worker-Request-Vision-Concept.png)
+
+![Architecture approaches considered for the request flow](/images/2019/06/Worekr-Request-Architecture-Approaches.png)
+
+![Prototype: shift preview](/images/2019/06/screencapture-9pcrwp-axshare-request-workers-shift-preview-html-2019-06-03-19_48_05.png)
+
+![Prototype: requester home](/images/2019/06/screencapture-75rm5p-axshare-home-html-2019-06-03-19_48_34.png)
+
+![Prototype: job post](/images/2019/06/screencapture-w3y8yp-axshare-request-workers-job-post-html-2019-06-03-19_46_57.png)
+
+![Time-off flow exploration](/images/2019/06/Time-Off-Flow.png)
 
 ### Delivery
 
@@ -87,7 +84,6 @@ The final solution is a pretty basic single form experience with an advanced tem
 
 Beyond greatly improving the efficiency of the experience, it was the first experience that was fully responsive to support the on-the-go nature of needing to get requests in at a moments notice.
 
-- ![](/images/2019/06/Minimum-Viable-Onsite-Shift-Desktop.png)
-- ![](/images/2019/06/Time-Off-Request-Employee-Multiple-Locations-Mobile.png)
+![Final shift request form on desktop](/images/2019/06/Minimum-Viable-Onsite-Shift-Desktop.png)
 
-[/passster]
+![Time-off request across multiple locations on mobile](/images/2019/06/Time-Off-Request-Employee-Multiple-Locations-Mobile.png)
