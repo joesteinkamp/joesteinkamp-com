@@ -149,6 +149,8 @@ section{padding:9vh 0}
 .btn{font-family:var(--mono);font-size:14px;border:1px solid var(--ink);padding:14px 22px;
   border-radius:999px;transition:background .2s,color .2s,border-color .2s;display:inline-block}
 .btn:hover{background:var(--acid);border-color:var(--acid);color:#000}
+/* centered "view all →" affordance below a section grid/list */
+.more{display:flex;justify-content:center;margin-top:30px}
 
 /* footer / contact */
 footer{border-top:1px solid var(--line);padding:50px 0 80px;margin-top:6vh;
