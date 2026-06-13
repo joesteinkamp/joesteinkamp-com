@@ -61,7 +61,8 @@
     lightGallery(container, {
       selector: '.lb-item',
       plugins: [lgZoom, lgFullscreen, lgThumbnail],
-      speed: 350,
+      speed: 300,
+      easing: 'cubic-bezier(.22,1,.36,1)',
       download: false,
       // Single zoom control: the default `actualSize` button is itself a toggle
       // — its icon swaps between zoom-in (fit) and zoom-out (1:1) and clicking
@@ -71,25 +72,34 @@
       // keep the close icon so there's always a visible way out (tap-to-close
       // also stays on via the default closeOnTap).
       mobileSettings: { controls: true, showCloseIcon: true, download: false },
-      // GPLv3 (open-source) usage of lightGallery — silences the license notice.
-      licenseKey: '0000-0000-0000-0000',
+      // Official GPLv3 (open-source) license key per the lightGallery docs.
+      // It logs a one-line console notice — that is the licensed behavior;
+      // don't swap in a fake key to silence it.
+      licenseKey: '0000-0000-000-0000',
     });
+
+    // The gallery chrome sets its own native cursors; hide the site's custom
+    // cursor dot while the viewer is open so the two never overlap.
+    container.addEventListener('lgAfterOpen', () => document.body.classList.add('lg-open'));
+    container.addEventListener('lgAfterClose', () => document.body.classList.remove('lg-open'));
   }
 
   document.querySelectorAll<HTMLElement>('.prose').forEach(setup);
 </script>
 
 <style is:global>
-  /* Signal that prose images are interactive. */
+  /* Signal that prose images are interactive — same hover vocabulary as .card
+     (acid border + slight lift). No `cursor` override: the site hides the
+     native cursor and the custom dot grows over anchors instead. */
   .prose .lb-item {
     display: block;
-    cursor: zoom-in;
     border: 0;
   }
   .prose .lb-item img {
-    transition: opacity 0.2s ease;
+    transition: border-color 0.3s, transform 0.3s;
   }
   .prose .lb-item:hover img {
-    opacity: 0.9;
+    border-color: rgba(212, 255, 0, 0.5);
+    transform: translateY(-2px);
   }
 </style>

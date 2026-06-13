@@ -27,6 +27,9 @@ const projects = defineCollection({
     featured: z.boolean().default(false),
     // Controls the gradient treatment on cards (see global.css).
     accent: z.enum(['p1', 'p2', 'p3', 'p4']).default('p1'),
+    // Representative project image shown (desaturated, with a scrim) on the
+    // work card. Projects without one fall back to the bare accent gradient.
+    cardImage: z.string().optional(),
     order: z.number().default(0),
   }),
 });

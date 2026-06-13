@@ -5,9 +5,20 @@ import { site } from '../config/site';
 interface Props {
   title?: string;
   description?: string;
+  /** Root-relative path (or absolute URL) for the social share image. */
+  image?: string;
+  /** Open Graph type — 'article' for writing posts and case studies. */
+  ogType?: 'website' | 'article';
 }
-const { title, description = 'Product design and design-engineering leader.' } = Astro.props;
+const {
+  title,
+  description = 'Product design and design-engineering leader.',
+  image = '/og/og-default.png',
+  ogType = 'website',
+} = Astro.props;
 const fullTitle = title ? `${title} — ${site.name}` : `${site.name} — ${site.tagline}`;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL(image, Astro.site);
 const path = Astro.url.pathname;
 const isCurrent = (href: string) =>
   href === '/' ? path === '/' : path.startsWith(href);
@@ -20,6 +31,21 @@ const isCurrent = (href: string) =>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#0a0a0f" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content={fullTitle} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="alternate" type="application/rss+xml" title={`${site.name} — Writing`} href="/rss.xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -82,9 +108,10 @@ const isCurrent = (href: string) =>
           cur.style.transform = `translate(${cx}px,${cy}px) translate(-50%,-50%)`;
           requestAnimationFrame(loop);
         })();
-        document.querySelectorAll('a,.card,.proj,.btn,h1').forEach((el) => {
-          el.addEventListener('mouseenter', () => cur.classList.add('big'));
-          el.addEventListener('mouseleave', () => cur.classList.remove('big'));
+        // Delegated so the dot also grows over elements added after load
+        // (e.g. anchors the lightbox wraps around prose images).
+        document.addEventListener('mouseover', (e) => {
+          cur.classList.toggle('big', !!e.target.closest?.('a,.card,.proj,.btn,h1'));
         });
       }
       // scroll reveal
