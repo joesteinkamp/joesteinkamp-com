@@ -32,11 +32,11 @@ const repos = (github.repos ?? []).slice(0, 3);
     <section id="now">
       <div class="sec-head reveal"><h2>What I'm Doing Now</h2><span class="idx">001 / Recent</span></div>
       <div class="now">
-        <div class="card span reveal">
+        <a class="card span reveal" href="/work/">
           <div class="lab">Currently</div>
           <div class="big">{now.currently}</div>
           <div class="pillz">{now.pills.map((p) => <span class="pill">{p}</span>)}</div>
-        </div>
+        </a>
 
         <a class="card reveal" href={site.social.github}>
           <div class="lab">↳ Latest From GitHub</div>
@@ -55,7 +55,7 @@ const repos = (github.repos ?? []).slice(0, 3);
         </a>
 
         <div class="card reveal">
-          <div class="lab">↳ Latest Writing</div>
+          <a class="lab" href="/writing/">↳ Latest Writing</a>
           <div class="feed">
             {latest.map((p) => (
               <a class="row" href={`/writing/${p.id}`}>
@@ -65,17 +65,6 @@ const repos = (github.repos ?? []).slice(0, 3);
             ))}
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- DESIGN KNOWLEDGE BASE -->
-    <section id="dkb">
-      <div class="hhmm feature reveal">
-        <div>
-          <h3>Design Knowledge Base</h3>
-          <p>An open-source library of design documentation & apps — frameworks, tools, operations, and leadership in one structured place. The resource I wished existed, built in the open.</p>
-        </div>
-        <a class="btn" href="https://www.designknowledgebase.com">Explore the Base ↗</a>
       </div>
     </section>
 
@@ -94,6 +83,15 @@ const repos = (github.repos ?? []).slice(0, 3);
         ))}
       </div>
       <div class="more reveal"><a class="btn" href="/work">View All Work →</a></div>
+
+      <!-- DESIGN KNOWLEDGE BASE — separate initiative, sits under Selected Work -->
+      <div class="hhmm feature reveal" id="dkb" style="margin-top:48px">
+        <div>
+          <h3>Design Knowledge Base</h3>
+          <p>An open-source library of design documentation & apps — frameworks, tools, operations, and leadership in one structured place. The resource I wished existed, built in the open.</p>
+        </div>
+        <a class="btn" href="https://www.designknowledgebase.com">Explore the Base ↗</a>
+      </div>
     </section>
 
     <!-- WRITING -->
