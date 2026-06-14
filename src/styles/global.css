@@ -4,6 +4,10 @@
   --line:rgba(255,255,255,.10);
   --font:"Space Grotesk",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
   --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  /* liquid-glass material (nav): luminous, lit, refractive */
+  --glass-fill:rgba(255,255,255,.045);
+  --glass-fx:blur(16px) saturate(170%) brightness(1.12);
+  --float-sm:0 6px 20px -8px rgba(0,0,0,.55);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -14,14 +18,12 @@ body{
 a{color:inherit;text-decoration:none}
 ::selection{background:var(--acid);color:#000}
 
-/* animated background glow */
+/* luminous accent field — one smooth, static light per accent; no drift, no grain */
 .glow{position:fixed;inset:0;z-index:0;pointer-events:none;
   background:
-    radial-gradient(40vw 40vw at 15% 10%, rgba(91,91,255,.25), transparent 60%),
-    radial-gradient(45vw 45vw at 90% 20%, rgba(255,45,107,.22), transparent 60%),
-    radial-gradient(50vw 50vw at 60% 100%, rgba(0,229,255,.16), transparent 60%);
-  animation:drift 18s ease-in-out infinite alternate;}
-@keyframes drift{to{transform:translate3d(0,-4%,0) scale(1.1)}}
+    radial-gradient(60vw 50vw at 82% -8%, rgba(212,255,0,.10), transparent 60%),
+    radial-gradient(55vw 60vw at 12% 8%, rgba(91,91,255,.10), transparent 58%),
+    radial-gradient(80vw 60vw at 60% 115%, rgba(0,229,255,.05), transparent 60%);}
 
 /* custom cursor */
 .cursor{position:fixed;top:0;left:0;z-index:9999;pointer-events:none;
@@ -48,11 +50,22 @@ body.lg-open{cursor:auto}
 
 .wrap{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:0 24px}
 
-/* nav (full-bleed) */
+/* nav (floating glass pill) */
 nav{display:flex;justify-content:space-between;align-items:center;
-  padding:20px clamp(20px,5vw,48px);position:sticky;top:0;z-index:50;width:100%;
-  border-bottom:1px solid var(--line);
-  backdrop-filter:blur(8px);background:linear-gradient(var(--bg),rgba(10,10,15,.4))}
+  position:sticky;top:14px;z-index:50;
+  width:min(1200px,100% - 48px);margin:14px auto 0;
+  padding:13px 22px;border-radius:999px;
+  background:var(--glass-fill);
+  -webkit-backdrop-filter:var(--glass-fx);backdrop-filter:var(--glass-fx);
+  box-shadow:var(--float-sm)}
+/* specular edge: a lit bevel (bright top-left, glint bottom-right) drawn as a 1px gradient ring */
+nav::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;
+  background:linear-gradient(135deg,rgba(255,255,255,.55),rgba(255,255,255,.08) 26%,transparent 50%,rgba(255,255,255,.04) 74%,rgba(255,255,255,.28));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude}
+/* faint inner top highlight = luminosity */
+nav::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.14)}
 nav .brand{font-family:var(--mono);font-weight:500;letter-spacing:-.02em}
 nav .brand b{color:var(--acid)}
 nav .links{display:flex;gap:26px;font-family:var(--mono);font-size:14px}
@@ -72,7 +85,7 @@ h1.display .l2{display:block;color:transparent;-webkit-text-stroke:2px var(--ink
 h1.display .arrow{color:var(--acid);-webkit-text-stroke:0;display:inline-block;transition:transform .3s}
 h1.display:hover .arrow{transform:translate(14px,-14px) rotate(8deg)}
 .tag{margin-top:30px;font-size:clamp(1.1rem,2.6vw,1.9rem);font-weight:500;max-width:760px}
-.tag em{font-style:normal;background:linear-gradient(90deg,var(--hot),var(--electric),var(--cyan));
+.tag em{font-style:normal;background:linear-gradient(90deg,var(--acid),var(--cyan));
   -webkit-background-clip:text;background-clip:text;color:transparent}
 
 /* sections */
@@ -146,6 +159,8 @@ section{padding:9vh 0}
 .hhmm h3{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:700;letter-spacing:-.02em}
 .hhmm p{color:var(--muted);margin-top:10px;max-width:460px;font-family:var(--mono);font-size:14px}
 .hhmm.feature{background:radial-gradient(60% 100% at 100% 0,rgba(91,91,255,.20),transparent),radial-gradient(50% 100% at 0 100%,rgba(0,229,255,.12),transparent),rgba(255,255,255,.02)}
+/* homepage HHMM teaser only — yellow light instead of the default red (the base .hhmm stays red, incl. the /design reference) */
+#hhmm .hhmm{background:radial-gradient(60% 100% at 100% 0,rgba(212,255,0,.16),transparent),rgba(255,255,255,.02)}
 .btn{font-family:var(--mono);font-size:14px;border:1px solid var(--ink);padding:14px 22px;
   border-radius:999px;transition:background .2s,color .2s,border-color .2s;display:inline-block}
 .btn:hover{background:var(--acid);border-color:var(--acid);color:#000}
