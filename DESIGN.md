@@ -34,7 +34,7 @@ Defined in `src/styles/global.css` `:root`. **Always reference the variable, nev
 **Rules**
 - The theme is **dark-only**. There is no light mode and no theme toggle — don't add one without an explicit decision.
 - **One accent does the work at a time.** `--acid` is the default interactive accent (hover, focus, current-page). The other three (`--hot`, `--electric`, `--cyan`) appear almost exclusively inside gradients, not as solid UI fills.
-- Gradient emphasis uses the fixed sequence `linear-gradient(90deg, var(--hot), var(--electric), var(--cyan))` (e.g. `.tag em`). Reuse it; don't invent new gradient stops casually.
+- Gradient emphasis (e.g. `.tag em`) uses a restrained two-stop sweep `linear-gradient(90deg, var(--acid), var(--cyan))`, anchored on the accent. Keep emphasis gradients short and in-family — don't reintroduce the old three-color rainbow.
 - Project-card gradient variants (`.proj.p1`–`.p4`) are the sanctioned palette for tiles. Pick from those four rather than authoring new ones.
 - Maintain WCAG AA contrast: `--ink` on `--bg` passes; `--muted` is for non-essential text only — never body copy.
 
@@ -75,7 +75,7 @@ Two families, loaded from Google Fonts (`Space Grotesk` 400/500/700, `JetBrains 
 
 **Spacing language** — viewport-relative for vertical rhythm, fixed for component internals.
 - Section vertical padding: `9vh 0` (hero `8vh 0 6vh`).
-- Nav: `padding:20px clamp(20px,5vw,48px)`, full-bleed, sticky, `backdrop-filter:blur(8px)`.
+- Nav: a **floating glass pill** — `position:sticky;top:14px`, centered `width:min(1200px,100% - 48px)`, pill radius, liquid-glass material (see §6). Not full-bleed.
 - Footer: `padding:50px 0 80px`, `margin-top:6vh`.
 - Card padding: `26px`. Common gaps: `18px` (card grids), `20px`, `26px` (nav), `14px`/`8px` (rows/pills).
 
@@ -104,7 +104,8 @@ Two families, loaded from Google Fonts (`Space Grotesk` 400/500/700, `JetBrains 
 
 Motion is **ambient and restrained** — it signals interactivity, it doesn't perform.
 
-- **Background glow** (`.glow`) — fixed multi-radial gradient drifting on an 18s loop. Decorative, `pointer-events:none`, sits behind everything.
+- **Background field** (`.glow`) — a fixed, **static** luminous accent field: one smooth radial light per accent (acid, electric, cyan) at low opacity. Decorative, `pointer-events:none`, behind everything. No drift, no grain — it gives the glass something to refract.
+- **Liquid-glass nav** (`nav`) — `--glass-fx` (`blur(16px) saturate(170%) brightness(1.12)`) over `--glass-fill`, a specular gradient-ring edge (`::before`) and faint inner top highlight (`::after`), floating on `--float-sm`. Reads as lit glass, not a flat tint; refracts the background field and content scrolling behind it.
 - **Custom cursor** (`.cursor`) — `14px` acid dot, grows to `64px` hot on interactive hover, `mix-blend-mode:difference`. Desktop only.
 - **Status dot** (`.dot`) — pulsing acid indicator (1.6s) for "live/now" signals.
 - **Scroll reveal** (`.reveal`) — opacity + slight translateY fade-in via IntersectionObserver.
