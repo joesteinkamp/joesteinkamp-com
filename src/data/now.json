@@ -1,5 +1,5 @@
 {
-  "status": "Shipping AI-native tools at the intersection of design and engineering.",
-  "currently": "Shipping a suite of agentic tools — from a natural-language GUI library and design system automation to an AGENTS.md starter kit and Chrome screenshot tooling. The question underneath it all: what does it actually look like for a design leader to build with AI rather than just direct it?",
-  "pills": ["AI Tooling", "Design Engineering", "Chrome Extensions", "Open Source"]
+  "status": "Expanding the AI ↔ design toolkit — instruction infrastructure, Figma tooling, and design skills.",
+  "currently": "The toolkit keeps growing: a portable AI instruction set that works across Claude, Cursor, Copilot, and Gemini; a web-to-Figma bridge; UX audit skills built as agent capabilities. The AGENTS.md ecosystem is maturing. Still the same question underneath it all — what does it actually look like for a design leader to build with AI rather than just direct it?",
+  "pills": ["AI Tooling", "Design Engineering", "Figma", "Open Source"]
 }
