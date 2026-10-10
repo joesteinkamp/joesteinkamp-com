@@ -1,5 +1,5 @@
 {
-  "status": "Shipping AI-native tools at the intersection of design and engineering.",
-  "currently": "Shipping a suite of agentic tools — from a natural-language GUI library and design system automation to an AGENTS.md starter kit and Chrome screenshot tooling. The question underneath it all: what does it actually look like for a design leader to build with AI rather than just direct it?",
-  "pills": ["AI Tooling", "Design Engineering", "Chrome Extensions", "Open Source"]
+  "status": "Building agent harnesses and tools so a design leader can ship, not just direct.",
+  "currently": "Keeping up the agent harness work — the instructions, skills, and hooks that shape how coding agents behave across tools. Trying to get agents to run longer on their own without falling apart. At AlphaSense, defining what design works like after Figma. And a usability testing tool you can drop into any app to get a session replay that stays entirely local. Off the clock, I'm watching horror movies for HHMM XVIII. The question underneath it all: what does it look like for a design leader to build with AI rather than just direct it?",
+  "pills": ["AI Tooling", "Agent Harnesses", "Usability Testing", "Open Source"]
 }
