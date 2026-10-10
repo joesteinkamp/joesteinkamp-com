@@ -1,5 +1,5 @@
 {
-  "status": "Building agent-facing design tools — so a design leader can ship, not just direct.",
-  "currently": "Recent work is in tooling for AI agents that touch design: UX audit and usability-testing skills that let an agent critique and test a live interface, design-system skills for scaffolding, linting, and syncing components, and a portable instruction set that renders one source of truth into CLAUDE.md, AGENTS.md, and GEMINI.md. The question underneath it all: what does it look like for a design leader to build with AI rather than just direct it?",
-  "pills": ["AI Tooling", "Design Systems", "UX Audits", "Open Source"]
+  "status": "Building agent harnesses and tools so a design leader can ship, not just direct.",
+  "currently": "Keeping up the agent harness work — the instructions, skills, and hooks that shape how coding agents behave across tools. Trying to get agents to run longer on their own without falling apart. At AlphaSense, defining what design works like after Figma. And a usability testing tool you can drop into any app to get a session replay that stays entirely local. Off the clock, I'm watching horror movies for HHMM XVIII. The question underneath it all: what does it look like for a design leader to build with AI rather than just direct it?",
+  "pills": ["AI Tooling", "Agent Harnesses", "Usability Testing", "Open Source"]
 }
