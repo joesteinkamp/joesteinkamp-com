@@ -1,5 +1,5 @@
 {
-  "status": "Shipping AI-native tools at the intersection of design and engineering.",
-  "currently": "Shipping a suite of agentic tools — from a natural-language GUI library and design system automation to an AGENTS.md starter kit and Chrome screenshot tooling. The question underneath it all: what does it actually look like for a design leader to build with AI rather than just direct it?",
-  "pills": ["AI Tooling", "Design Engineering", "Chrome Extensions", "Open Source"]
+  "status": "Building agent-facing design tools — so a design leader can ship, not just direct.",
+  "currently": "Recent work is in tooling for AI agents that touch design: UX audit and usability-testing skills that let an agent critique and test a live interface, design-system skills for scaffolding, linting, and syncing components, and a portable instruction set that renders one source of truth into CLAUDE.md, AGENTS.md, and GEMINI.md. The question underneath it all: what does it look like for a design leader to build with AI rather than just direct it?",
+  "pills": ["AI Tooling", "Design Systems", "UX Audits", "Open Source"]
 }
