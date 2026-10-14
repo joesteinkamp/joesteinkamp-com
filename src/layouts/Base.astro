@@ -78,6 +78,14 @@ const isCurrent = (href: string) =>
           <a href={n.href} aria-current={isCurrent(n.href) ? 'page' : undefined}>{n.label}</a>
         ))}
       </div>
+      <button class="burger" type="button" popovertarget="menu" aria-label="Menu">
+        <span></span><span></span>
+      </button>
+      <div class="menu" id="menu" popover>
+        {site.nav.map((n) => (
+          <a href={n.href} aria-current={isCurrent(n.href) ? 'page' : undefined}>{n.label}</a>
+        ))}
+      </div>
     </nav>
 
     <slot />

@@ -71,6 +71,26 @@ nav .brand b{color:var(--acid)}
 nav .links{display:flex;gap:26px;font-family:var(--mono);font-size:14px}
 nav .links a{color:var(--muted);transition:color .2s}
 nav .links a:hover,nav .links a[aria-current="page"]{color:var(--ink)}
+/* mobile menu: hamburger button + glass popover (hidden above the breakpoint) */
+nav .burger{display:none;position:relative;width:36px;height:36px;margin:-8px -8px -8px 0;
+  border:0;background:none;color:var(--ink);cursor:inherit}
+nav .burger span{position:absolute;left:9px;right:9px;height:1.5px;background:currentColor;
+  border-radius:2px;transition:transform .25s,top .25s}
+nav .burger span:first-child{top:14px}
+nav .burger span:last-child{top:21px}
+nav:has(.menu:popover-open) .burger span:first-child{top:17.5px;transform:rotate(45deg)}
+nav:has(.menu:popover-open) .burger span:last-child{top:17.5px;transform:rotate(-45deg)}
+nav .menu{inset:auto 24px auto auto;top:76px;margin:0;min-width:200px;
+  padding:10px;border:1px solid var(--line);border-radius:22px;color:var(--ink);
+  background:rgba(16,16,22,.97);
+  -webkit-backdrop-filter:var(--glass-fx);backdrop-filter:var(--glass-fx);
+  box-shadow:var(--float-sm),inset 0 1px 0 rgba(255,255,255,.14);
+  font-family:var(--mono);font-size:15px}
+nav .menu:popover-open{display:flex;flex-direction:column}
+nav .menu a{padding:12px 14px;border-radius:12px;color:var(--muted);transition:color .2s,background .2s}
+nav .menu a:hover,nav .menu a[aria-current="page"]{color:var(--ink);background:var(--glass-fill)}
+nav .menu a[aria-current="page"]::before{content:"";display:inline-block;width:6px;height:6px;
+  border-radius:50%;background:var(--acid);margin-right:10px;vertical-align:middle}
 .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--acid);
   margin-right:7px;box-shadow:0 0 12px var(--acid);animation:pulse 1.6s infinite}
 @keyframes pulse{50%{opacity:.35}}
@@ -217,5 +237,6 @@ footer a:hover{color:var(--acid)}
   .post .ar{display:none}
   .resume .role{grid-template-columns:1fr}
   .resume .role .pd{text-align:left}
-  nav .links{gap:16px}
+  nav .links{display:none}
+  nav .burger{display:block}
 }

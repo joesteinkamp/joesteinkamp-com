@@ -92,7 +92,7 @@ Two families, loaded from Google Fonts (`Space Grotesk` 400/500/700, `JetBrains 
 
 ## 5. Responsive
 
-**One breakpoint: `@media(max-width:900px)`.** It collapses `.now`/`.work` to a single column, simplifies `.post` and `.resume .role`, and tightens nav gaps.
+**One breakpoint: `@media(max-width:900px)`.** It collapses `.now`/`.work` to a single column, simplifies `.post` and `.resume .role`, and collapses the nav links into a hamburger button that opens a glass popover menu (native `popover`, light-dismiss).
 
 - Don't add breakpoints to fix sizing — reach for `clamp()` first. A new media query needs a real justification (a layout that genuinely can't flex).
 - Everything must be legible and usable from ~320px up. Test the single-column collapse.
