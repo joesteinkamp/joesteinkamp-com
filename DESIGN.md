@@ -6,7 +6,7 @@ This document defines the design language for the site and the rules anyone (hum
 
 ## 1. Philosophy
 
-The site is a **dark, brutalist-leaning, neon-accented personal site** built for speed and clarity. Five governing ideas:
+The site is a **typographic personal site that re-themes itself every visit** (§9), built for speed and clarity. Its base look — the Original family — is dark, brutalist-leaning, and neon-accented. Five governing ideas:
 
 1. **Content first, chrome second.** Typography and whitespace carry the design. Decoration (glow, cursor, gradients) is subtle and never competes with reading.
 2. **One source of truth.** All design tokens live in `:root` of a single CSS file. No Tailwind, no CSS modules, no component-scoped style sprawl. If you need a value, it should already be a variable — add one rather than hardcoding.
@@ -32,7 +32,7 @@ Defined in `src/styles/global.css` `:root`. **Always reference the variable, nev
 | `--line` | `rgba(255,255,255,.10)` | Borders, dividers, hairlines |
 
 **Rules**
-- The theme is **dark-only**. There is no light mode and no theme toggle — don't add one without an explicit decision.
+- The values above are the **Original** family — the base look, and what no-JS visitors get. Every visit, the generative theme engine (§9) may swap in another family that redefines these tokens; some families are light. Components must therefore read tokens, never hardcode colors — use `color-mix(in oklab, var(--acid) N%, transparent)` instead of an `rgba()` of the accent, and `--accent-text` (not `--acid`) when the accent colors text.
 - **One accent does the work at a time.** `--acid` is the default interactive accent (hover, focus, current-page). The other three (`--hot`, `--electric`, `--cyan`) appear almost exclusively inside gradients, not as solid UI fills.
 - Gradient emphasis (e.g. `.tag em`) uses a restrained two-stop sweep `linear-gradient(90deg, var(--acid), var(--cyan))`, anchored on the accent. Keep emphasis gradients short and in-family — don't reintroduce the old three-color rainbow.
 - Project-card gradient variants (`.proj.p1`–`.p4`) are the sanctioned palette for tiles. Pick from those four rather than authoring new ones.
@@ -114,7 +114,7 @@ Motion is **ambient and restrained** — it signals interactivity, it doesn't pe
 
 **Rules**
 - Transitions stay short (`.2s–.3s`) and ease. No bounce, no long durations.
-- Keep JS minimal — cursor, reveal, and the lightbox are the only scripted behaviors. Don't add animation libraries.
+- Keep JS minimal — the theme engine, cursor, reveal, and the lightbox are the only scripted behaviors. Don't add animation libraries.
 - Effects must be skippable/harmless: nothing essential should depend on an animation completing, and decorative motion must never block content.
 
 ---
@@ -141,7 +141,27 @@ Catalog lives in `global.css` and renders on `/design`. Key building blocks: `na
 
 ---
 
-## 9. Adding or Changing Design — Checklist
+## 9. Generative Themes
+
+The site re-themes itself on every visit. `src/scripts/theme-engine.js` is inlined into `<head>` (so it runs before first paint — no flash) and sets three things on `<html>`:
+
+| Output | Values | Derived from |
+|--------|--------|--------------|
+| `data-theme` | `refined` · `editorial` · `swiss` · `terminal` · `original` | Visit count: visits 1–3 follow a curated sequence (Refined → Editorial → Swiss); from visit 4 it's a seeded pick that never repeats the previous visit's family |
+| `--hue` | `0–360` | Geography: the viewer's UTC offset maps around the color wheel (west → warm, east → cool), jittered by timezone name, then rotated by the golden angle (137.5°) per visit |
+| `data-mode` | `light` · `dark` | Local time, for families that support both (Editorial is light 7am–7pm) |
+
+- **A visit is a browser session.** Navigating between pages keeps the theme (sessionStorage); coming back generates a new one. Visit count and last family live in localStorage. Nothing is sent anywhere — geography comes from the browser's timezone, not an IP lookup.
+- The footer **theme stamp** names what this visit generated ("Editorial · tinted for Chicago · your 4th visit") and has a **Shuffle** button that rerolls in place.
+- **Preview any family** with query params: `?theme=swiss`, plus optional `&hue=200` and `&mode=light|dark`. `/design` links to each.
+- Families live in `src/styles/themes.css`, scoped by `[data-theme="…"]`. They recolor through OKLCH tokens keyed off `--hue` (e.g. `--acid:oklch(.88 .17 var(--hue))`), so each family fixes lightness/chroma — and therefore contrast — while the hue roams. A shared "calm layer" (`[data-theme]:not([data-theme="original"])`) strips the Original's effects: glow, custom cursor, glass nav, pulsing dot, outline and gradient text.
+- Families only restyle shared classes — never fork markup per theme. Extra webfonts a family needs are listed in the engine and injected only when that family is chosen.
+
+**Adding a family:** add an entry to `FAMILIES` in the engine (label, supported modes, fonts), add its `[data-theme="name"]` block to `themes.css` (tokens first, then component overrides), add it to the list on `/design`, and check it at 390px and desktop in each mode it supports — AA contrast for `--ink` and `--accent-text` on `--bg`.
+
+---
+
+## 10. Adding or Changing Design — Checklist
 
 1. Can existing tokens/classes do it? If yes, use them.
 2. New value? Add a `:root` variable instead of hardcoding.
@@ -149,4 +169,4 @@ Catalog lives in `global.css` and renders on `/design`. Key building blocks: `na
 4. New accent use? Default to `--acid`; reserve the other three for gradients.
 5. Mono only for metadata/structural text; `--font` for prose and headings.
 6. Added a reusable component/token? Update `/design`.
-7. Verify: dark theme intact, AA contrast, 900px collapse works, touch fallback present, JS still minimal.
+7. Verify: every theme family still reads correctly (`?theme=…`), AA contrast, 900px collapse works, touch fallback present, JS still minimal.

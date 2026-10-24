@@ -1,6 +1,8 @@
 ---
 import '../styles/global.css';
+import '../styles/themes.css';
 import { site } from '../config/site';
+import themeEngine from '../scripts/theme-engine.js?raw';
 
 interface Props {
   title?: string;
@@ -28,6 +30,7 @@ const isCurrent = (href: string) =>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <script is:inline set:html={themeEngine}></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
@@ -102,10 +105,33 @@ const isCurrent = (href: string) =>
           <a href="/design">Site's System ↗</a>
           <span style="margin-top:14px;color:#55556a">© 2026 {site.name} · {site.location}</span>
         </div>
+        <div class="theme-stamp" id="theme-stamp" hidden>
+          <span id="theme-desc"></span>
+          <button type="button" id="theme-shuffle">↻ Shuffle</button>
+        </div>
       </footer>
     </div>
 
     <script is:inline>
+      // theme stamp: say what this visit generated, and let viewers reroll it
+      (function () {
+        const T = window.siteTheme;
+        const stamp = document.getElementById('theme-stamp');
+        const meta = document.querySelector('meta[name="theme-color"]');
+        if (!T || !T.current || !stamp) return;
+        const ord = (n) => n + (['th', 'st', 'nd', 'rd'][(n % 100 - 20) % 10] || ['th', 'st', 'nd', 'rd'][n % 100] || 'th');
+        const render = () => {
+          const t = T.current;
+          document.getElementById('theme-desc').textContent =
+            `This visit: ${T.families[t.family].label} · ` +
+            (t.family === 'original' ? 'the 2025 neon cut' : `tinted for ${t.city}`) +
+            ` · your ${ord(t.visit)} visit`;
+          if (meta) meta.content = getComputedStyle(document.body).backgroundColor;
+        };
+        document.getElementById('theme-shuffle').addEventListener('click', () => { T.shuffle(); render(); });
+        stamp.hidden = false;
+        render();
+      })();
       // custom cursor
       const cur = document.getElementById('cur');
       if (cur && window.matchMedia('(pointer:fine)').matches) {

@@ -16,6 +16,14 @@ const colors = [
   { name: 'line', value: 'rgba(255,255,255,.10)', use: 'Borders, dividers, hairlines' },
 ];
 
+const themes = [
+  { id: 'refined', label: 'Refined', note: 'dark · first visit' },
+  { id: 'editorial', label: 'Editorial', note: 'light by day, dark by night' },
+  { id: 'swiss', label: 'Swiss', note: 'light' },
+  { id: 'terminal', label: 'Terminal', note: 'dark' },
+  { id: 'original', label: 'Original', note: 'dark · base tokens · no-JS' },
+];
+
 const fonts = [
   { name: 'font', stack: '"Space Grotesk", system-ui, …', use: 'Display & body' },
   { name: 'mono', stack: '"JetBrains Mono", ui-monospace, …', use: 'Labels, meta, code, nav' },
@@ -43,6 +51,30 @@ const gradients = [
         components are the classes below. Change a value there and it changes everywhere.
       </p>
     </div>
+
+    <!-- ── THEME FAMILIES ── -->
+    <section id="themes">
+      <div class="sec-head">
+        <h2>Theme families</h2>
+        <span class="idx">src/styles/themes.css</span>
+      </div>
+      <div class="prose" style="margin-bottom:28px">
+        <p>
+          Every visit generates a theme: a family picked by visit count, an accent hue from the
+          viewer's timezone, and light or dark from their local time. The tokens below are the
+          Original family. Preview any family on any page with <code>?theme=</code>.
+        </p>
+      </div>
+      <div class="posts">
+        {themes.map((t) => (
+          <a class="post" href={`/?theme=${t.id}`}>
+            <span class="d">{t.id}</span>
+            <span class="ti">{t.label}</span>
+            <span class="ar">{t.note}</span>
+          </a>
+        ))}
+      </div>
+    </section>
 
     <!-- ── COLOR TOKENS ── -->
     <section id="color">
